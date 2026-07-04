@@ -1,7 +1,16 @@
 # Portfolio Oscar Jimenez — CLAUDE.md
 
-**Última actualización:** 2026-07-03  
+**Última actualización:** 2026-07-04  
 **Propósito:** Base central de conocimientos, decisiones de arquitectura, errores documentados, y evolución del proyecto.
+
+## ESTADO ACTUAL (2026-07-04)
+- ✅ Sitio completo construido y en GitHub (`oscarjnz/portfolio`), desplegado en Vercel.
+- ✅ Secciones: Loading, Hero, Sobre mí (con foto), Skills, Proyectos (lightbox), Certificaciones (7 tier-1 con imagen), Trayectoria, Contacto.
+- ✅ Video del hero: **local, auto-hospedado** (`public/videos/hero.mp4`, 2.6MB, generado por IA). HLS/Mux **eliminado** → bundle ~127KB gzip.
+- ✅ Foto principal: `profile.png` (crop cerrado) en Sobre mí. `profile-wide.png` = alterna, sin usar.
+- ✅ Bilingüe ES/EN (default ES). Vercel Analytics activo.
+- 🎯 Pendiente: conectar dominio osnarci.online cuando Productivity OS migre; posible video propio grabado; sección de baseball/deportes si se quiere ampliar.
+- ⚠️ Docs personales (CVs, PDFs con cédula/teléfono) viven en `_source-docs/` — **gitignored**, nunca subir a repo público.
 
 ---
 
