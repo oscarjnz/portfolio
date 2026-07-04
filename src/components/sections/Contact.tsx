@@ -3,17 +3,13 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { Github, Linkedin, Instagram, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { useHlsVideo } from "@/hooks/useHlsVideo";
-import { SITE, SOCIAL, HERO_VIDEO_HLS } from "@/utils/constants";
+import { SITE, SOCIAL, HERO_VIDEO_SRC } from "@/utils/constants";
 
 const MARQUEE_TEXT = "BUILDING · SECURING · AUTOMATING · ";
 
 export default function Contact() {
   const { t } = useLanguage();
-  const videoRef = useRef<HTMLVideoElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
-
-  useHlsVideo(videoRef, HERO_VIDEO_HLS);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -36,13 +32,15 @@ export default function Contact() {
     >
       {/* Background video, flipped */}
       <video
-        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
+        preload="none"
         className="absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-y-[-1] object-cover opacity-60"
-      />
+      >
+        <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-black/70" />
       <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg" />
 

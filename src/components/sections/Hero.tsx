@@ -1,17 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { useHlsVideo } from "@/hooks/useHlsVideo";
 import { heroRoles } from "@/data/about";
-import { SITE, HERO_VIDEO_HLS } from "@/utils/constants";
+import { SITE, HERO_VIDEO_SRC } from "@/utils/constants";
 
 export default function Hero() {
   const { t, lang } = useLanguage();
-  const videoRef = useRef<HTMLVideoElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const [roleIndex, setRoleIndex] = useState(0);
-
-  useHlsVideo(videoRef, HERO_VIDEO_HLS);
 
   // Cycle hero roles every 2s.
   useEffect(() => {
@@ -44,14 +40,13 @@ export default function Hero() {
         0.3,
       );
 
-      // Safety guard: if rAF is throttled (e.g. background tab) and the tween
-      // never runs, force the final visible state so content is never stuck
-      // hidden. window.setTimeout is independent of GSAP's rAF ticker.
+      // Safety guard: unconditionally settle to the final visible state after
+      // the entrance would have finished. window.setTimeout is independent of
+      // GSAP's rAF ticker, so content is never left hidden even if rAF is
+      // throttled (background tab, slow device). Harmless once the tween ran.
       guard = window.setTimeout(() => {
-        if (tl.progress() < 1) {
-          gsap.set(targets, { opacity: 1, y: 0, filter: "none" });
-        }
-      }, 2800);
+        gsap.set(targets, { opacity: 1, y: 0, filter: "none" });
+      }, 2600);
     }, rootRef);
 
     return () => {
@@ -70,13 +65,15 @@ export default function Hero() {
     >
       {/* Background video */}
       <video
-        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         className="absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 object-cover"
-      />
+      >
+        <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-black/40" />
       <div className="absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t from-bg to-transparent" />
 
