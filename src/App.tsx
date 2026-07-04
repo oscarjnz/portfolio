@@ -8,6 +8,7 @@ import Skills from "@/components/sections/Skills";
 import Work from "@/components/sections/Work";
 import Certifications from "@/components/sections/Certifications";
 import Experience from "@/components/sections/Experience";
+import Beyond from "@/components/sections/Beyond";
 import Contact from "@/components/sections/Contact";
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
         <Work />
         <Certifications />
         <Experience />
+        <Beyond />
         <Contact />
       </main>
     </>

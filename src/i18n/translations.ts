@@ -60,6 +60,13 @@ export const translations = {
       subtext: "De las aulas al departamento de TI.",
       present: "Actualidad",
     },
+    beyond: {
+      eyebrow: "Fuera del teclado",
+      heading: "Mentalidad de",
+      headingItalic: "atleta",
+      subtext:
+        "Casi 12 años de béisbol competitivo. Sigo el juego desde la sabermetría y hoy aplico la misma disciplina a la recomposición corporal — y al código.",
+    },
     contact: {
       eyebrow: "Contacto",
       heading: "Construyamos",
@@ -129,6 +136,13 @@ export const translations = {
       headingItalic: "education",
       subtext: "From the classroom to the IT department.",
       present: "Present",
+    },
+    beyond: {
+      eyebrow: "Beyond the keyboard",
+      heading: "Athlete's",
+      headingItalic: "mindset",
+      subtext:
+        "Nearly 12 years of competitive baseball. I follow the game through sabermetrics and today apply the same discipline to body recomposition — and to code.",
     },
     contact: {
       eyebrow: "Contact",
