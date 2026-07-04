@@ -2,7 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const WORDS = ["Secure", "Build", "Automate"];
-const DURATION = 2600; // ms to count 0 -> 100
+
+// The loader is a quick branded flash, not a fixed wait. It resolves as soon
+// as fonts are ready (so the hero renders with no FOUT), bounded by MIN/MAX.
+const MIN_MS = 500; // show the animation at least this long
+const MAX_MS = 1600; // hard cap — never wait longer than this
 
 export default function LoadingScreen({
   onComplete,
@@ -16,40 +20,44 @@ export default function LoadingScreen({
   useEffect(() => {
     let raf = 0;
     let done = false;
+    const start = performance.now();
+
     const finish = () => {
       if (done) return;
       done = true;
       setCount(100);
-      setTimeout(onComplete, 400);
+      setTimeout(onComplete, 300);
     };
 
+    // Drive the counter toward 100 across MAX_MS; snap to 100 on finish.
     const tick = (now: number) => {
       if (startRef.current === null) startRef.current = now;
-      const elapsed = now - startRef.current;
-      const progress = Math.min(elapsed / DURATION, 1);
+      const progress = Math.min((now - startRef.current) / MAX_MS, 0.99);
       setCount(Math.floor(progress * 100));
-      if (progress < 1) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        finish();
-      }
+      if (!done) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
 
-    // Wall-clock guard: guarantees completion even if rAF is throttled
-    // (e.g. background tab), so the loader can never get stuck.
-    const fallback = window.setTimeout(finish, DURATION + 600);
+    // Complete as soon as fonts are ready AND the minimum time has elapsed.
+    const ready = document.fonts?.ready ?? Promise.resolve();
+    ready.then(() => {
+      const remaining = Math.max(0, MIN_MS - (performance.now() - start));
+      window.setTimeout(finish, remaining);
+    });
+
+    // Hard cap + rAF-throttle guard (works even in a background tab).
+    const cap = window.setTimeout(finish, MAX_MS);
 
     return () => {
       cancelAnimationFrame(raf);
-      window.clearTimeout(fallback);
+      window.clearTimeout(cap);
     };
   }, [onComplete]);
 
   useEffect(() => {
     const id = setInterval(
       () => setWordIndex((i) => (i + 1) % WORDS.length),
-      900,
+      450,
     );
     return () => clearInterval(id);
   }, []);
@@ -58,17 +66,12 @@ export default function LoadingScreen({
     <motion.div
       className="fixed inset-0 z-[9999] bg-bg"
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       {/* Top-left label */}
-      <motion.span
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="absolute left-6 top-6 text-xs uppercase tracking-[0.3em] text-muted md:left-10 md:top-10"
-      >
+      <span className="absolute left-6 top-6 text-xs uppercase tracking-[0.3em] text-muted md:left-10 md:top-10">
         Osnarci
-      </motion.span>
+      </span>
 
       {/* Center rotating words */}
       <div className="flex h-full items-center justify-center">
@@ -78,7 +81,7 @@ export default function LoadingScreen({
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             className="font-display text-4xl italic text-text-primary/80 md:text-6xl lg:text-7xl"
           >
             {WORDS[wordIndex]}
@@ -96,7 +99,7 @@ export default function LoadingScreen({
       {/* Bottom progress bar */}
       <div className="absolute bottom-0 left-0 h-[3px] w-full bg-stroke/50">
         <div
-          className="accent-gradient h-full origin-left"
+          className="accent-gradient h-full origin-left transition-transform duration-150"
           style={{
             transform: `scaleX(${count / 100})`,
             boxShadow: "0 0 8px rgba(137, 170, 204, 0.35)",
