@@ -1,4 +1,4 @@
-// Central site configuration — single source of truth for identity & links.
+// Central site configuration: single source of truth for identity & links.
 
 export const SITE = {
   name: "Oscar Jimenez",
@@ -19,7 +19,7 @@ export const SOCIAL = {
   instagram: "https://instagram.com/oscar.jp__",
 } as const;
 
-// Background video — local MP4 (self-hosted, ~2.6MB). No external stream.
+// Background video: local MP4 (self-hosted, ~2.6MB). No external stream.
 export const HERO_VIDEO_SRC = "/videos/hero.mp4";
 
-export const SCROLL_THRESHOLD = 100; // px — navbar gains shadow past this
+export const SCROLL_THRESHOLD = 100; // px, navbar gains shadow past this

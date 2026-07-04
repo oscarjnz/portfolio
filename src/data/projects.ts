@@ -9,8 +9,8 @@ export const projects: Project[] = [
       en: "Network security auditing for everyone",
     },
     description: {
-      es: "Plataforma que inventaría los dispositivos de tu red, detecta puertos y servicios expuestos, y te avisa ante cambios o amenazas. Todo el análisis corre en un agente local que nunca expone tu red a internet — solo conexiones salientes por WSS. Un asistente de IA interpreta cada resultado.",
-      en: "A platform that inventories your network devices, detects exposed ports and services, and alerts you to changes or threats. All scanning runs on a local agent that never exposes your network to the internet — outbound WSS connections only. An AI assistant interprets every result.",
+      es: "Plataforma que inventaría los dispositivos de tu red, detecta puertos y servicios expuestos, y te avisa ante cambios o amenazas. Todo el análisis corre en un agente local que nunca expone tu red a internet, solo conexiones salientes por WSS. Un asistente de IA interpreta cada resultado.",
+      en: "A platform that inventories your network devices, detects exposed ports and services, and alerts you to changes or threats. All scanning runs on a local agent that never exposes your network to the internet, outbound WSS connections only. An AI assistant interprets every result.",
     },
     url: "https://securitysmartservices.site",
     image: "/images/projects/sss-landing.png",

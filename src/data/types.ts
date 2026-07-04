@@ -5,7 +5,7 @@ export type Localized = Record<Lang, string>;
 
 export interface Project {
   id: string;
-  title: string; // brand name — same in both languages
+  title: string; // brand name, same in both languages
   tagline: Localized;
   description: Localized;
   url: string;

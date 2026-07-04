@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Portfolio personal de Oscar Jimenez (Osnarci) — Cybersecurity & Web Development",
+  "description": "Portfolio personal de Oscar Jimenez (Osnarci): Cybersecurity & Web Development",
   "author": "Oscar Jimenez <oscar@osnarci.online>",
   "scripts": {
     "dev": "vite",

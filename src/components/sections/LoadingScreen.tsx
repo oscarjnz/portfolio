@@ -6,7 +6,7 @@ const WORDS = ["Secure", "Build", "Automate"];
 // The loader is a quick branded flash, not a fixed wait. It resolves as soon
 // as fonts are ready (so the hero renders with no FOUT), bounded by MIN/MAX.
 const MIN_MS = 500; // show the animation at least this long
-const MAX_MS = 1600; // hard cap — never wait longer than this
+const MAX_MS = 1600; // hard cap, never wait longer than this
 
 export default function LoadingScreen({
   onComplete,

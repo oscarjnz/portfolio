@@ -50,7 +50,7 @@
 }
 
 @layer utilities {
-  /* Accent gradient — used on logo ring, hover borders, progress bars */
+  /* Accent gradient: used on logo ring, hover borders, progress bars */
   .accent-gradient {
     background: linear-gradient(90deg, #89aacc 0%, #4e85bf 100%);
   }
