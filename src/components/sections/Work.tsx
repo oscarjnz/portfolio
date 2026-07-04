@@ -92,7 +92,7 @@ function ProjectCard({
           <span className="relative rounded-full">
             <span className="animated-gradient-border absolute inset-[-2px] rounded-full" />
             <span className="relative inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm text-black">
-              {t.work.viewProject} —{" "}
+              {t.work.viewProject} ·{" "}
               <span className="font-display italic">{project.title}</span>
             </span>
           </span>

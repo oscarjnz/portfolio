@@ -33,7 +33,7 @@ Thumbs.db
 # Vercel
 .vercel
 
-# Source documents (CVs, raw certificate PDFs) — NOT part of the site
+# Source documents (CVs, raw certificate PDFs): NOT part of the site
 /_source-docs/
 dist-types
 

@@ -19,7 +19,7 @@ export default function Certifications() {
           subtext={t.certifications.subtext}
         />
 
-        {/* Tier 1 — feature cards */}
+        {/* Tier 1: feature cards */}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {tier1.map((cert, i) => (
             <motion.div
@@ -60,7 +60,7 @@ export default function Certifications() {
           ))}
         </div>
 
-        {/* Tier 2/3 — compact list */}
+        {/* Tier 2/3: compact list */}
         <div className="mt-6 flex flex-wrap gap-3">
           {rest.map((cert, i) => (
             <motion.div

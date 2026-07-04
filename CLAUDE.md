@@ -1,4 +1,4 @@
-# Portfolio Oscar Jimenez — CLAUDE.md
+# Portfolio Oscar Jimenez - CLAUDE.md
 
 **Última actualización:** 2026-07-04  
 **Propósito:** Base central de conocimientos, decisiones de arquitectura, errores documentados, y evolución del proyecto.
@@ -10,7 +10,7 @@
 - ✅ Foto principal: `profile.png` (crop cerrado) en Sobre mí. `profile-wide.png` = alterna, sin usar.
 - ✅ Bilingüe ES/EN (default ES). Vercel Analytics activo.
 - 🎯 Pendiente: conectar dominio osnarci.online cuando Productivity OS migre; posible video propio grabado; sección de baseball/deportes si se quiere ampliar.
-- ⚠️ Docs personales (CVs, PDFs con cédula/teléfono) viven en `_source-docs/` — **gitignored**, nunca subir a repo público.
+- ⚠️ Docs personales (CVs, PDFs con cédula/teléfono) viven en `_source-docs/` - **gitignored**, nunca subir a repo público.
 
 ---
 
@@ -47,7 +47,7 @@
 - **Package Manager:** npm
 - **Node Version:** 18+ (LTS)
 
-### S.S.S. (Security Smart Services) — Stack Detallado
+### S.S.S. (Security Smart Services) - Stack Detallado
 **Frontend:**
 - React 18 + Vite + TypeScript (strict) + Tailwind CSS + shadcn/ui
 - Clerk Auth (login, OAuth, JWT, registro)
@@ -55,8 +55,8 @@
 
 **Backend:**
 - Express (Node/TS) en Render (free tier, hiberna @15min)
-- Relay WebSocket en Fly.io (Miami) — pasarela WSS:443
-- Scanner-agent local (Win/macOS/Linux) — ejecuta nmap/ping/traceroute
+- Relay WebSocket en Fly.io (Miami) - pasarela WSS:443
+- Scanner-agent local (Win/macOS/Linux) - ejecuta nmap/ping/traceroute
 - APIs serverless en Vercel: sync KEV, CVE, OWASP, pwned-passwords, geo
 
 **Database & Services:**
@@ -170,7 +170,7 @@ portafolio/
 **Criterios:**
 - [ ] About section con texto + datos reales de Oscar
 - [ ] Skills: 3-4 categorías, badges animados al scroll
-- [ ] Sin hardcoding de labels — data en `src/data/skills.ts`
+- [ ] Sin hardcoding de labels - data en `src/data/skills.ts`
 
 ### **Phase 3: Projects Showcase**
 **Entrega:** 4 tarjetas de proyectos (S.S.S., Nutriflow, Active Calendar, Productivity OS). Lightbox/modal.  
@@ -280,58 +280,58 @@ portafolio/
 
 ---
 
-## VI. CERTIFICACIONES — Análisis por Tier
+## VI. CERTIFICACIONES - Análisis por Tier
 
-### **TIER 1 — Mostrar en portafolio (prominente)**
-*Estos 5 certificados son los "heavyweight" — ciberseguridad + evolución profesional*
+### **TIER 1 - Mostrar en portafolio (prominente)**
+*Estos 5 certificados son los "heavyweight" - ciberseguridad + evolución profesional*
 
-1. **Google Cybersecurity Professional Certificate** (8 cursos) — Google/Coursera — Dec 2025
+1. **Google Cybersecurity Professional Certificate** (8 cursos) - Google/Coursera - Dec 2025
    - Status: Recent, comprehensive, industry-recognized
    - Image: `Coursera Google Cloud.pdf` (convertir a PNG)
    - Display: Logo + "8 courses" badge
 
-2. **Microsoft Cybersecurity Architect** — Microsoft/Gold Learning Partner — Nov 2025
+2. **Microsoft Cybersecurity Architect** - Microsoft/Gold Learning Partner - Nov 2025
    - Status: Prestigious, indicates advanced level
    - Image: `251118 SC-100T00-A...pdf` (extraer)
    - Display: Microsoft logo + "Architect" badge
 
-3. **Ethical Hacker** — Cisco Networking Academy — Feb 2024
+3. **Ethical Hacker** - Cisco Networking Academy - Feb 2024
    - Status: Industry standard, red-team credibility
    - Image: `ethical-hacker.png` (Ya existe ✅)
    - Display: Logo + Cisco badge
 
-4. **Introduction to Cybersecurity** — Cisco — Feb 2024
+4. **Introduction to Cybersecurity** - Cisco - Feb 2024
    - Status: Foundational, paired with Ethical Hacker
    - Image: `introduction-to-cybersecurity.png` (Ya existe ✅)
    - Display: Logo + badge
 
-5. **Fortinet NSE 1 - Technical Introduction to Cybersecurity 3.0** — Oct 2025
+5. **Fortinet NSE 1 - Technical Introduction to Cybersecurity 3.0** - Oct 2025
    - Status: Vendor-specific, current
    - Image: `NSE 1 - Fortinet.png` (Ya existe ✅)
    - Display: Fortinet logo + badge
 
-### **TIER 2 — Mencionar en "Skills" section (no individual cards)**
+### **TIER 2 - Mencionar en "Skills" section (no individual cards)**
 *Estos complementan pero no son el foco principal*
 
-- Ethical Hacking and Pentesting — Hacker Mentor — Sep 2024
-- Computer Security from Scratch — Udemy (Thiago Araujo) — Jan 2024
-- NDG Linux Unhatched — Cisco/NDG — Jun 2024
-- Networking Basics — Cisco — Feb 2024
-- English for IT 1 — Cisco/OpenEDG — Feb 2024
+- Ethical Hacking and Pentesting - Hacker Mentor - Sep 2024
+- Computer Security from Scratch - Udemy (Thiago Araujo) - Jan 2024
+- NDG Linux Unhatched - Cisco/NDG - Jun 2024
+- Networking Basics - Cisco - Feb 2024
+- English for IT 1 - Cisco/OpenEDG - Feb 2024
 
-### **TIER 3 — En "About" como "continuous learning" (no mostrar PDFs)**
-*HTML/CSS/Git/JS Logic de Alura/ONE — son básicos de grado*
+### **TIER 3 - En "About" como "continuous learning" (no mostrar PDFs)**
+*HTML/CSS/Git/JS Logic de Alura/ONE - son básicos de grado*
 
-- HTML & CSS: 4 cursos — Alura LATAM — Feb 2025
-- Git & GitHub — Alura LATAM — Jan 2025
-- Programming Logic: 2 cursos — Alura LATAM — Jan 2025
+- HTML & CSS: 4 cursos - Alura LATAM - Feb 2025
+- Git & GitHub - Alura LATAM - Jan 2025
+- Programming Logic: 2 cursos - Alura LATAM - Jan 2025
 
-### **TIER 4 — Business/Soft Skills (mencionar si es necesario)**
-- Digital Transformation — University of Virginia/BCG — Oct 2025
-- Generative AI Applications — Google Cloud — Oct 2025
-- ChatGPT: Optimizing Output Quality — Alura — Feb 2025
-- Tech from Zero: Semiconductors — EOI — 2025
-- Ladder Challenge: Industrial Automation — GingeLearn — Feb 2025
+### **TIER 4 - Business/Soft Skills (mencionar si es necesario)**
+- Digital Transformation - University of Virginia/BCG - Oct 2025
+- Generative AI Applications - Google Cloud - Oct 2025
+- ChatGPT: Optimizing Output Quality - Alura - Feb 2025
+- Tech from Zero: Semiconductors - EOI - 2025
+- Ladder Challenge: Industrial Automation - GingeLearn - Feb 2025
 
 ### **Imágenes de certificados disponibles en carpeta:**
 - ✅ ethical-hacker.png
@@ -349,24 +349,24 @@ portafolio/
 
 ## VII. PROYECTOS EXISTENTES (Ya online)
 
-### 1. **Security Smart Services** (S.S.S.) — FLAGSHIP
+### 1. **Security Smart Services** (S.S.S.) - FLAGSHIP
 - **URL:** https://securitysmartservices.site
 - **Status:** LIVE (ya en producción)
 - **Descripción:** Platform para monitoreo de red en tiempo real
 - **Stack:** React 18, Vite, TS, Tailwind, shadcn/ui, Clerk, Supabase, Groq, Express, Render, Fly.io
 
-### 2. **osnarci.online** — Personal Site
+### 2. **osnarci.online** - Personal Site
 - **URL:** https://osnarci.online
 - **Status:** LIVE
 - **Stack:** Vanilla HTML, CSS, JavaScript
 - **Nota:** Este es su sitio personal actual. El portafolio nuevo REEMPLAZARÁ esta URL.
 
-### 3. **Nutriflow** — (Del brief anterior, no reencontrado en carpeta)
+### 3. **Nutriflow** - (Del brief anterior, no reencontrado en carpeta)
 - **URL:** https://nutriflow-sigma.vercel.app
 - **Status:** Asumo LIVE
 - **Stack:** Next.js, Supabase, Groq AI
 
-### 4. **Active Calendar** — (Del brief anterior)
+### 4. **Active Calendar** - (Del brief anterior)
 - **URL:** https://activecalendar.site
 - **Status:** Asumo LIVE
 - **Stack:** Cloudflare Workers, Supabase, Telegram Bot API
@@ -466,7 +466,7 @@ EDUCATION:
 | Tipos de traducción incompatibles (es vs en) | `as const` estrecha los literales; `"Home"` no asignable a `"Inicio"` | Quitar `as const` del objeto translations; los valores se ensanchan a `string` | No usar `as const` en diccionarios i18n con misma forma |
 | Contenido invisible en tab de fondo | Chrome estrangula rAF en tabs inactivas → GSAP `.from()` y framer `whileInView` quedan en opacity:0 | Guard con `window.setTimeout` (independiente de rAF) que fuerza estado final visible | Toda animación de entrada que oculta contenido necesita fallback de reloj |
 
-### Lección clave — Robustez de animaciones
+### Lección clave - Robustez de animaciones
 Cualquier animación que empiece en `opacity: 0` (GSAP `.from`, framer `initial`) debe tener
 un camino garantizado al estado visible que NO dependa de rAF, por si el navegador lo estrangula
 (tab de fondo, throttling, JS lento). Patrón: `window.setTimeout` + set del estado final.
@@ -550,13 +550,13 @@ export const skillsData: SkillCategory[] = [
 
 ### Imágenes necesarias (PRIORITY):
 
-**TIER 1 — Critical (MVP):**
-- [ ] S.S.S. screenshot (dashboard/hero) — JPG/PNG — 1200×800 min
-- [ ] Google Cybersecurity cert — PNG (convertir PDF o screenshot)
-- [ ] Microsoft Cybersecurity Architect cert — PNG (convertir PDF o screenshot)
-- [ ] Tu foto de perfil — JPG/PNG — 400×400 min (headshot profesional)
+**TIER 1 - Critical (MVP):**
+- [ ] S.S.S. screenshot (dashboard/hero) - JPG/PNG - 1200×800 min
+- [ ] Google Cybersecurity cert - PNG (convertir PDF o screenshot)
+- [ ] Microsoft Cybersecurity Architect cert - PNG (convertir PDF o screenshot)
+- [ ] Tu foto de perfil - JPG/PNG - 400×400 min (headshot profesional)
 
-**TIER 2 — Nice to have (Phase 2+):**
+**TIER 2 - Nice to have (Phase 2+):**
 - [ ] Nutriflow screenshot
 - [ ] Active Calendar screenshot
 - [ ] Productivity OS screenshot

@@ -65,7 +65,7 @@ export const translations = {
       heading: "Mentalidad de",
       headingItalic: "atleta",
       subtext:
-        "Casi 12 años de béisbol competitivo. Sigo el juego desde la sabermetría y hoy aplico la misma disciplina a la recomposición corporal — y al código.",
+        "Casi 12 años de béisbol competitivo. Sigo el juego desde la sabermetría y hoy aplico la misma disciplina a la recomposición corporal, y al código.",
     },
     contact: {
       eyebrow: "Contacto",
@@ -142,7 +142,7 @@ export const translations = {
       heading: "Athlete's",
       headingItalic: "mindset",
       subtext:
-        "Nearly 12 years of competitive baseball. I follow the game through sabermetrics and today apply the same discipline to body recomposition — and to code.",
+        "Nearly 12 years of competitive baseball. I follow the game through sabermetrics and today apply the same discipline to body recomposition, and to code.",
     },
     contact: {
       eyebrow: "Contact",

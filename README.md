@@ -1,6 +1,6 @@
-# Oscar Jimenez — Portfolio
+# Oscar Jimenez · Portfolio
 
-Portafolio personal de **Oscar Jimenez** (*Osnarci*) — ciberseguridad y desarrollo web full-stack.
+Portafolio personal de **Oscar Jimenez** (*Osnarci*): ciberseguridad y desarrollo web full-stack.
 
 Sitio de una sola página, tema oscuro, bilingüe (ES/EN), construido con foco en performance.
 
@@ -11,11 +11,11 @@ Sitio de una sola página, tema oscuro, bilingüe (ES/EN), construido con foco e
 ## Stack
 
 - **React 18** + **Vite** + **TypeScript** (strict)
-- **Tailwind CSS** — design system con variables HSL
-- **GSAP** — animación de entrada del hero y marquee
-- **Framer Motion** — transiciones on-scroll y modales
-- **hls.js** — video de fondo (carga diferida)
-- **Vercel Analytics** — métricas ligeras
+- **Tailwind CSS**: design system con variables HSL
+- **GSAP**: animación de entrada del hero y marquee
+- **Framer Motion**: transiciones on-scroll y modales
+- **Video de fondo**: MP4 auto-hospedado (`public/videos/hero.mp4`, ~2.6MB)
+- **Vercel Analytics**: métricas ligeras
 
 ## Secciones
 
@@ -48,7 +48,7 @@ src/
 ## Contenido
 
 Todo el contenido vive en `src/data/` como objetos `{ es, en }`. Para editar proyectos,
-skills o certificaciones se modifican esos archivos — sin CMS.
+skills o certificaciones se modifican esos archivos, sin CMS.
 
 ## Deployment
 
