@@ -19,8 +19,7 @@ export const SOCIAL = {
   instagram: "https://instagram.com/oscar.jp__",
 } as const;
 
-// Background video (HLS stream). MP4 fallback lives in /public/videos if provided.
-export const HERO_VIDEO_HLS =
-  "https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8";
+// Background video — local MP4 (self-hosted, ~2.6MB). No external stream.
+export const HERO_VIDEO_SRC = "/videos/hero.mp4";
 
 export const SCROLL_THRESHOLD = 100; // px — navbar gains shadow past this
