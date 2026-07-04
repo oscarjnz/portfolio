@@ -4,7 +4,7 @@ Portafolio personal de **Oscar Jimenez** (*Osnarci*) — ciberseguridad y desarr
 
 Sitio de una sola página, tema oscuro, bilingüe (ES/EN), construido con foco en performance.
 
-**Live:** [osnarci.online](https://osnarci.online) · **Contacto:** oscarjimenez1410@gmail.com
+**Live:** [osnarci.online](https://osnarci.online) · **Contacto:** oscar@osnarci.online
 
 ---
 

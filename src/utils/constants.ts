@@ -4,7 +4,7 @@ export const SITE = {
   name: "Oscar Jimenez",
   handle: "Osnarci",
   initials: "OJ",
-  email: "oscarjimenez1410@gmail.com",
+  email: "oscar@osnarci.online",
   phone: "+1 809 966 2254",
   location: {
     es: "Santo Domingo, República Dominicana",
