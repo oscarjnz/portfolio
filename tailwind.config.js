@@ -14,7 +14,6 @@ export default {
       fontFamily: {
         body: ["Inter", "sans-serif"],
         display: ["'Instrument Serif'", "serif"],
-        mono: ["'JetBrains Mono'", "monospace"],
       },
       animation: {
         "scroll-down": "scroll-down 1.5s ease-in-out infinite",
