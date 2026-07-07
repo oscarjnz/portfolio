@@ -73,6 +73,8 @@ export const translations = {
       subtext:
         "¿Un proyecto, una auditoría, o solo saludar? Mi bandeja siempre está abierta.",
       available: "Disponible para proyectos",
+      resumeHeading: "Descarga mi CV",
+      resumeSubtext: "Elige el formato según tu región.",
     },
     footer: {
       rights: "Todos los derechos reservados.",
@@ -148,6 +150,8 @@ export const translations = {
       subtext:
         "A project, an audit, or just to say hi? My inbox is always open.",
       available: "Available for projects",
+      resumeHeading: "Download my resume",
+      resumeSubtext: "Pick the format for your region.",
     },
     footer: {
       rights: "All rights reserved.",
