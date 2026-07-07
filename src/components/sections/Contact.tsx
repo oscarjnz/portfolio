@@ -114,7 +114,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-col items-center justify-between gap-2 text-center text-xs text-muted/70 md:flex-row md:text-left">
+          <div className="mt-6 flex flex-col items-center justify-between gap-2 text-center text-xs text-muted md:flex-row md:text-left">
             <span>
               © {year} {SITE.name}. {t.footer.rights}
             </span>
