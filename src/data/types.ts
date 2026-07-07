@@ -31,6 +31,7 @@ export interface Certification {
   issuer: string;
   date: string;
   image?: string;
+  credentialUrl?: string; // public verification link, when available
   tier: 1 | 2 | 3;
   category: "cybersecurity" | "networking" | "development" | "business";
 }

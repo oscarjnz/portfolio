@@ -52,7 +52,8 @@ export const translations = {
       heading: "Certificaciones y",
       headingItalic: "formación",
       subtext: "Aprendizaje continuo en seguridad, redes y desarrollo.",
-      viewAll: "Ver todas",
+      verify: "Verificar",
+      more: "Más credenciales",
     },
     experience: {
       eyebrow: "Trayectoria",
@@ -130,7 +131,8 @@ export const translations = {
       heading: "Certifications and",
       headingItalic: "training",
       subtext: "Continuous learning across security, networking and development.",
-      viewAll: "View all",
+      verify: "Verify",
+      more: "More credentials",
     },
     experience: {
       eyebrow: "Journey",

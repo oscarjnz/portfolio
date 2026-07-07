@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
-import { Award, ShieldCheck } from "lucide-react";
+import { Award, ShieldCheck, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { certifications } from "@/data/certifications";
+import type { Certification } from "@/data/types";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function Certifications() {
   const { t } = useLanguage();
   const tier1 = certifications.filter((c) => c.tier === 1);
-  const rest = certifications.filter((c) => c.tier !== 1);
+  const withImage = certifications.filter((c) => c.tier !== 1 && c.image);
+  const textOnly = certifications.filter((c) => c.tier !== 1 && !c.image);
 
   return (
     <section id="certifications" className="bg-bg py-20 md:py-28">
@@ -22,47 +24,27 @@ export default function Certifications() {
         {/* Tier 1: feature cards */}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {tier1.map((cert, i) => (
-            <motion.div
-              key={cert.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.06 }}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-stroke bg-surface/40 transition-colors hover:border-white/20"
-            >
-              {cert.image ? (
-                <div className="aspect-[4/3] overflow-hidden border-b border-stroke bg-white">
-                  <img
-                    src={cert.image}
-                    alt={cert.title}
-                    loading="lazy"
-                    className="h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-              ) : (
-                <div className="flex aspect-[4/3] items-center justify-center border-b border-stroke bg-gradient-to-br from-surface to-bg">
-                  <ShieldCheck
-                    className="h-14 w-14 text-text-primary/30"
-                    strokeWidth={1}
-                  />
-                </div>
-              )}
-              <div className="flex flex-1 flex-col p-5">
-                <h3 className="text-sm font-medium leading-snug text-text-primary">
-                  {cert.title}
-                </h3>
-                <p className="mt-1 text-xs text-muted">{cert.issuer}</p>
-                <span className="mt-auto pt-3 text-[11px] uppercase tracking-wider text-muted">
-                  {formatDate(cert.date)}
-                </span>
-              </div>
-            </motion.div>
+            <FeatureCard key={cert.id} cert={cert} index={i} verify={t.certifications.verify} />
           ))}
         </div>
 
-        {/* Tier 2/3: compact list */}
+        {/* Tier 2 with image: compact thumbnail grid */}
+        {withImage.length > 0 && (
+          <>
+            <h3 className="mb-5 mt-14 text-xs uppercase tracking-[0.2em] text-muted">
+              {t.certifications.more}
+            </h3>
+            <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {withImage.map((cert, i) => (
+                <ThumbCard key={cert.id} cert={cert} index={i} />
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* Text-only: compact pills */}
         <div className="mt-6 flex flex-wrap gap-3">
-          {rest.map((cert, i) => (
+          {textOnly.map((cert, i) => (
             <motion.div
               key={cert.id}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -79,6 +61,91 @@ export default function Certifications() {
         </div>
       </div>
     </section>
+  );
+}
+
+function FeatureCard({
+  cert,
+  index,
+  verify,
+}: {
+  cert: Certification;
+  index: number;
+  verify: string;
+}) {
+  const Wrapper = cert.credentialUrl ? motion.a : motion.div;
+  const linkProps = cert.credentialUrl
+    ? { href: cert.credentialUrl, target: "_blank", rel: "noopener noreferrer" }
+    : {};
+
+  return (
+    <Wrapper
+      {...linkProps}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, delay: index * 0.06 }}
+      className="group flex flex-col overflow-hidden rounded-3xl border border-stroke bg-surface/40 transition-colors hover:border-white/20"
+    >
+      {cert.image ? (
+        <div className="aspect-[4/3] overflow-hidden border-b border-stroke bg-white">
+          <img
+            src={cert.image}
+            alt={cert.title}
+            loading="lazy"
+            className="h-full w-full object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+      ) : (
+        <div className="flex aspect-[4/3] items-center justify-center border-b border-stroke bg-gradient-to-br from-surface to-bg">
+          <ShieldCheck className="h-14 w-14 text-text-primary/30" strokeWidth={1} />
+        </div>
+      )}
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="text-sm font-medium leading-snug text-text-primary">
+          {cert.title}
+        </h3>
+        <p className="mt-1 text-xs text-muted">{cert.issuer}</p>
+        <div className="mt-auto flex items-center justify-between pt-3">
+          <span className="text-[11px] uppercase tracking-wider text-muted">
+            {formatDate(cert.date)}
+          </span>
+          {cert.credentialUrl && (
+            <span className="inline-flex items-center gap-1 text-[11px] font-medium text-text-primary/70 transition-colors group-hover:text-text-primary">
+              {verify}
+              <ArrowUpRight className="h-3 w-3" />
+            </span>
+          )}
+        </div>
+      </div>
+    </Wrapper>
+  );
+}
+
+function ThumbCard({ cert, index }: { cert: Certification; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, delay: index * 0.04 }}
+      className="group overflow-hidden rounded-2xl border border-stroke bg-surface/40 transition-colors hover:border-white/20"
+    >
+      <div className="aspect-[4/3] overflow-hidden border-b border-stroke bg-white">
+        <img
+          src={cert.image}
+          alt={cert.title}
+          loading="lazy"
+          className="h-full w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+      <div className="p-4">
+        <h4 className="text-xs font-medium leading-snug text-text-primary">
+          {cert.title}
+        </h4>
+        <p className="mt-1 text-[11px] text-muted">{cert.issuer}</p>
+      </div>
+    </motion.div>
   );
 }
 

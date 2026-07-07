@@ -1,13 +1,17 @@
 import type { Certification } from "./types";
 
-// Tier 1 = flagship (shown prominently). Tier 2 = supporting. Tier 3 = coursework.
+// Tier 1 = flagship (large feature cards). Tier 2 = supporting (image
+// thumbnails / pills). Tier 3 = complementary coursework (pills).
 export const certifications: Certification[] = [
+  // ── Tier 1 · flagship ────────────────────────────────────────────────
   {
     id: "google-cybersecurity",
     title: "Google Cybersecurity Professional Certificate",
     issuer: "Google · Coursera",
     date: "2025-12",
     image: "/images/certificates/google.png",
+    credentialUrl:
+      "https://coursera.org/verify/professional-cert/LY223EPKK0BT",
     tier: 1,
     category: "cybersecurity",
   },
@@ -22,7 +26,7 @@ export const certifications: Certification[] = [
   },
   {
     id: "fortinet-nse1",
-    title: "Technical Introduction to Cybersecurity 3.0",
+    title: "Fortinet NSE 1 · Introduction to the Threat Landscape",
     issuer: "Fortinet Training Institute",
     date: "2025-10",
     image: "/images/certificates/fortinet-nse1.png",
@@ -47,13 +51,62 @@ export const certifications: Certification[] = [
     tier: 1,
     category: "cybersecurity",
   },
+
+  // ── Tier 2 · supporting ──────────────────────────────────────────────
   {
-    id: "ethical-hacking-pentesting",
-    title: "Ethical Hacking y Pentesting",
-    issuer: "Hacker Mentor",
-    date: "2024-09",
+    // No image on purpose: the source certificate exposes a national ID
+    // number and a QR code, so it is listed as text only.
+    id: "talento-ciberseguridad-intermedio",
+    title: "Ciberseguridad · Nivel Intermedio (80h)",
+    issuer: "INDOTEL · BID · Cymetria",
+    date: "2026-01",
     tier: 2,
     category: "cybersecurity",
+  },
+  {
+    id: "fortinet-threat-landscape",
+    title: "Introduction to the Threat Landscape 3.0",
+    issuer: "Fortinet Training Institute",
+    date: "2025-10",
+    image: "/images/certificates/fortinet2.png",
+    tier: 2,
+    category: "cybersecurity",
+  },
+  {
+    id: "fortinet-getting-started",
+    title: "Getting Started in Cybersecurity 3.0",
+    issuer: "Fortinet Training Institute",
+    date: "2025-10",
+    image: "/images/certificates/fortinet3.png",
+    tier: 2,
+    category: "cybersecurity",
+  },
+  {
+    id: "fortinet-technical-intro",
+    title: "Technical Introduction to Cybersecurity 3.0",
+    issuer: "Fortinet Training Institute",
+    date: "2025-10",
+    image: "/images/certificates/fortinet1.png",
+    tier: 2,
+    category: "cybersecurity",
+  },
+  {
+    id: "cisco-network-devices",
+    title: "Network Devices and Initial Configuration",
+    issuer: "Cisco Networking Academy",
+    date: "2025-12",
+    image: "/images/certificates/cisco1.png",
+    tier: 2,
+    category: "networking",
+  },
+  {
+    id: "cisco-network-addressing",
+    title: "Network Addressing and Basic Troubleshooting",
+    issuer: "Cisco Networking Academy",
+    date: "2025-12",
+    image: "/images/certificates/cisco2.png",
+    tier: 2,
+    category: "networking",
   },
   {
     id: "networking-basics",
@@ -61,14 +114,6 @@ export const certifications: Certification[] = [
     issuer: "Cisco Networking Academy",
     date: "2024-02",
     image: "/images/certificates/networking-basics.png",
-    tier: 2,
-    category: "networking",
-  },
-  {
-    id: "ndg-linux",
-    title: "NDG Linux Unhatched",
-    issuer: "Cisco · NDG",
-    date: "2024-06",
     tier: 2,
     category: "networking",
   },
@@ -81,6 +126,24 @@ export const certifications: Certification[] = [
     tier: 2,
     category: "networking",
   },
+  {
+    id: "ethical-hacking-pentesting",
+    title: "Ethical Hacking y Pentesting",
+    issuer: "Hacker Mentor",
+    date: "2024-09",
+    tier: 2,
+    category: "cybersecurity",
+  },
+  {
+    id: "ndg-linux",
+    title: "NDG Linux Unhatched",
+    issuer: "Cisco · NDG",
+    date: "2024-06",
+    tier: 2,
+    category: "networking",
+  },
+
+  // ── Tier 3 · complementary ───────────────────────────────────────────
   {
     id: "digital-transformation",
     title: "Digital Transformation",

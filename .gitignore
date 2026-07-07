@@ -35,6 +35,9 @@ Thumbs.db
 
 # Source documents (CVs, raw certificate PDFs): NOT part of the site
 /_source-docs/
+
+# Certificate scans containing PII (national ID / QR): never publish
+/public/images/certificates/talento_digital.png
 dist-types
 
 # TS build info
