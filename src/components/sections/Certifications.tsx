@@ -52,7 +52,7 @@ export default function Certifications() {
                   {cert.title}
                 </h3>
                 <p className="mt-1 text-xs text-muted">{cert.issuer}</p>
-                <span className="mt-auto pt-3 text-[11px] uppercase tracking-wider text-muted/70">
+                <span className="mt-auto pt-3 text-[11px] uppercase tracking-wider text-muted">
                   {formatDate(cert.date)}
                 </span>
               </div>

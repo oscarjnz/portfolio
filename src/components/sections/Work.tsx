@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -125,6 +125,43 @@ function ProjectModal({
   const { t, lang } = useLanguage();
   const images = project.gallery ?? [project.image];
   const [activeImg, setActiveImg] = useState(0);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // Modal a11y: Escape to close, focus trap, scroll lock, focus restore.
+  useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    panelRef.current?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const focusables = panelRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (!focusables || focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = overflow;
+      previouslyFocused?.focus();
+    };
+  }, [onClose]);
 
   return (
     <motion.div
@@ -135,16 +172,21 @@ function ProjectModal({
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
     >
       <motion.div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={project.title}
+        tabIndex={-1}
         initial={{ scale: 0.95, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.95, opacity: 0, y: 20 }}
         transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         onClick={(e) => e.stopPropagation()}
-        className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-stroke bg-surface"
+        className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-stroke bg-surface focus:outline-none"
       >
         <button
           onClick={onClose}
-          aria-label="Cerrar"
+          aria-label={lang === "es" ? "Cerrar" : "Close"}
           className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-full border border-stroke bg-bg/80 text-muted backdrop-blur transition-colors hover:text-text-primary"
         >
           <X className="h-4 w-4" />

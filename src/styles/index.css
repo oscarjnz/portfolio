@@ -22,6 +22,14 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Keyboard focus: visible accent ring on interactive elements only
+     (not on mouse click, thanks to :focus-visible). */
+  :where(a, button, [tabindex], input, textarea, select):focus-visible {
+    outline: 2px solid #89aacc;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
   body {
     @apply bg-bg text-text-primary font-body antialiased;
     overflow-x: hidden;
