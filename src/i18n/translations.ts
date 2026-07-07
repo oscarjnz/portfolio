@@ -8,9 +8,7 @@ export const translations = {
     nav: {
       home: "Inicio",
       about: "Sobre mí",
-      skills: "Skills",
       work: "Proyectos",
-      experience: "Trayectoria",
       contact: "Contacto",
       sayHi: "Contáctame",
     },
@@ -60,7 +58,6 @@ export const translations = {
       heading: "Experiencia y",
       headingItalic: "educación",
       subtext: "De las aulas al departamento de TI.",
-      present: "Actualidad",
     },
     beyond: {
       eyebrow: "Fuera del teclado",
@@ -75,7 +72,6 @@ export const translations = {
       headingItalic: "algo juntos",
       subtext:
         "¿Un proyecto, una auditoría, o solo saludar? Mi bandeja siempre está abierta.",
-      cta: "Escríbeme",
       available: "Disponible para proyectos",
     },
     footer: {
@@ -87,9 +83,7 @@ export const translations = {
     nav: {
       home: "Home",
       about: "About",
-      skills: "Skills",
       work: "Work",
-      experience: "Journey",
       contact: "Contact",
       sayHi: "Say hi",
     },
@@ -139,7 +133,6 @@ export const translations = {
       heading: "Experience and",
       headingItalic: "education",
       subtext: "From the classroom to the IT department.",
-      present: "Present",
     },
     beyond: {
       eyebrow: "Beyond the keyboard",
@@ -154,7 +147,6 @@ export const translations = {
       headingItalic: "something together",
       subtext:
         "A project, an audit, or just to say hi? My inbox is always open.",
-      cta: "Email me",
       available: "Available for projects",
     },
     footer: {

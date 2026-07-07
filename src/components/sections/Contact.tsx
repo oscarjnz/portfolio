@@ -36,6 +36,8 @@ export default function Contact() {
         muted
         loop
         playsInline
+        aria-hidden="true"
+        tabIndex={-1}
         preload="none"
         className="absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-y-[-1] object-cover opacity-60"
       >
