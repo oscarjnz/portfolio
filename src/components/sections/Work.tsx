@@ -78,6 +78,12 @@ function ProjectCard({
           loading="lazy"
           className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
         />
+        {project.status === "in-progress" && (
+          <span className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-bg/80 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-text-primary backdrop-blur">
+            <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-amber-400" />
+            {t.work.inProgress}
+          </span>
+        )}
         {/* Halftone overlay */}
         <div
           className="pointer-events-none absolute inset-0 opacity-20 mix-blend-multiply"
@@ -225,6 +231,12 @@ function ProjectModal({
             <span className="rounded-full border border-stroke px-2 py-0.5 text-[11px] uppercase tracking-wider text-muted">
               {project.year}
             </span>
+            {project.status === "in-progress" && (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 px-2 py-0.5 text-[11px] uppercase tracking-wider text-amber-300">
+                <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-amber-400" />
+                {t.work.inProgress}
+              </span>
+            )}
           </div>
           <p className="mb-6 text-sm leading-relaxed text-muted md:text-base">
             {project.description[lang]}

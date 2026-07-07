@@ -83,7 +83,7 @@ export const projects: Project[] = [
       es: "Dashboard de productividad con widgets personalizables (tamaño, color, vistas), sincronizado en la nube con tu cuenta de Google. Reloj, clima, tráfico, correos sin leer, control de Spotify, calendario, notas, marcadores, cripto, divisas, resultados deportivos y un asistente de IA. Pensado para setups multi-monitor.",
       en: "Productivity dashboard with customizable widgets (size, color, views), cloud-synced via your Google account. Clock, weather, traffic, unread email, Spotify control, calendar, notes, bookmarks, crypto, currency, sports scores and an AI assistant. Built for multi-monitor setups.",
     },
-    url: "https://osnarci.online",
+    url: "https://productivity-os-beryl.vercel.app/",
     image: "/images/projects/productivity-os.png",
     tags: [
       "React",

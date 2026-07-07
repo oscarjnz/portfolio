@@ -45,6 +45,7 @@ export const translations = {
       viewProject: "Ver proyecto",
       visitSite: "Visitar sitio",
       flagship: "Proyecto insignia",
+      inProgress: "En progreso",
     },
     certifications: {
       eyebrow: "Credenciales",
@@ -122,6 +123,7 @@ export const translations = {
       viewProject: "View project",
       visitSite: "Visit site",
       flagship: "Flagship project",
+      inProgress: "In progress",
     },
     certifications: {
       eyebrow: "Credentials",
