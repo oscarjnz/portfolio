@@ -52,7 +52,7 @@ export default function Navbar() {
         {/* Logo */}
         <button
           onClick={() => scrollTo("home")}
-          aria-label="Inicio"
+          aria-label={t.nav.home}
           className="group relative grid h-9 w-9 place-items-center rounded-full"
         >
           <span className="accent-gradient absolute inset-0 rounded-full transition-transform duration-500 group-hover:rotate-180" />
