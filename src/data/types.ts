@@ -36,6 +36,13 @@ export interface Certification {
   category: "cybersecurity" | "networking" | "development" | "business";
 }
 
+export interface Resume {
+  id: string;
+  label: Localized; // region-oriented CV format
+  note: Localized; // short hint about where the format fits
+  file: string; // path under /public
+}
+
 export interface ExperienceItem {
   id: string;
   role: Localized;

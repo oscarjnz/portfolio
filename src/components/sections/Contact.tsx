@@ -1,14 +1,15 @@
 import { useLayoutEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import { Github, Linkedin, Instagram, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Instagram, ArrowUpRight, Download } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { SITE, SOCIAL, HERO_VIDEO_SRC } from "@/utils/constants";
+import { resumes } from "@/data/resumes";
 
 const MARQUEE_TEXT = "BUILDING · SECURING · AUTOMATING · ";
 
 export default function Contact() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -92,6 +93,36 @@ export default function Contact() {
                 <ArrowUpRight className="h-4 w-4" />
               </span>
             </a>
+
+            {/* Resume downloads, one per region-oriented format */}
+            <div className="mt-16">
+              <h3 className="text-sm uppercase tracking-[0.2em] text-text-primary">
+                {t.contact.resumeHeading}
+              </h3>
+              <p className="mt-2 text-sm text-muted">
+                {t.contact.resumeSubtext}
+              </p>
+              <div className="mx-auto mt-6 flex max-w-2xl flex-col gap-3 sm:flex-row sm:justify-center">
+                {resumes.map((resume) => (
+                  <a
+                    key={resume.id}
+                    href={resume.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                    className="group flex flex-1 flex-col items-center gap-1 rounded-2xl border border-stroke bg-surface/40 px-5 py-4 text-center transition-colors hover:border-white/20 hover:bg-surface/70"
+                  >
+                    <span className="flex items-center gap-2 text-sm text-text-primary">
+                      <Download className="h-4 w-4 text-muted transition-colors group-hover:text-text-primary" />
+                      {resume.label[lang]}
+                    </span>
+                    <span className="text-xs text-muted">
+                      {resume.note[lang]}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
 
