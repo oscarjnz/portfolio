@@ -1,16 +1,20 @@
 # Portfolio Oscar Jimenez - CLAUDE.md
 
-**Última actualización:** 2026-07-04  
+**Última actualización:** 2026-07-07  
 **Propósito:** Base central de conocimientos, decisiones de arquitectura, errores documentados, y evolución del proyecto.
 
-## ESTADO ACTUAL (2026-07-04)
+## ESTADO ACTUAL (2026-07-07)
 - ✅ Sitio completo construido y en GitHub (`oscarjnz/portfolio`), desplegado en Vercel.
-- ✅ Secciones: Loading, Hero, Sobre mí (con foto), Skills, Proyectos (lightbox), Certificaciones (7 tier-1 con imagen), Trayectoria, Contacto.
-- ✅ Video del hero: **local, auto-hospedado** (`public/videos/hero.mp4`, 2.6MB, generado por IA). HLS/Mux **eliminado** → bundle ~127KB gzip.
-- ✅ Foto principal: `profile.png` (crop cerrado) en Sobre mí. `profile-wide.png` = alterna, sin usar.
-- ✅ Bilingüe ES/EN (default ES). Vercel Analytics activo.
-- 🎯 Pendiente: conectar dominio osnarci.online cuando Productivity OS migre; posible video propio grabado; sección de baseball/deportes si se quiere ampliar.
-- ⚠️ Docs personales (CVs, PDFs con cédula/teléfono) viven en `_source-docs/` - **gitignored**, nunca subir a repo público.
+- ✅ Orden de secciones: Loading → Hero → Sobre mí → Skills → **Proyectos → Trayectoria → Certificaciones** → Beyond → Contacto. (Certifications ahora va DESPUÉS de Experience: reclutadores técnicos priorizan proyectos/experiencia real sobre certificados.)
+- ✅ Certificaciones: 5 Tier-1 (feature cards con imagen: Google, Microsoft, Fortinet NSE 1, Cisco Ethical Hacker, Cisco Intro) + Tier-2 con thumbnails de imagen (3 Fortinet Fundamentals, 2 módulos Cisco CCNA, Networking Basics, English for IT) + pills de texto (Talento Digital, Hacker Mentor, NDG Linux, Tier-3). Google tiene `credentialUrl` verificable (Coursera).
+- ✅ Video del hero: **local, auto-hospedado** (`public/videos/hero.mp4`, 2.6MB, generado por IA). HLS/Mux **eliminado**. Bundle inicial ~119KB gzip; el chunk `animations` (GSAP + Framer Motion) pesa 68KB gzip (mayor peso — candidato a consolidar, ver Sección VI M-4 de AUDIT.md).
+- ✅ LoadingScreen: flash breve **0.5–1.6s** atado a `document.fonts.ready` (ya NO 2.7s).
+- ✅ A11y: modal de proyectos con Escape/focus-trap/scroll-lock/role=dialog; `:focus-visible` global; contraste de texto muted corregido a AA.
+- ✅ SEO/social: `og-image.png` real (1200×630) + og/twitter/canonical absolutos; `robots.txt` + `sitemap.xml`.
+- ✅ Email definitivo: `oscar@osnarci.online`. Bilingüe ES/EN (default ES). Vercel Analytics activo.
+- 🎯 Pendiente: conectar dominio osnarci.online; posible video propio grabado; URLs de verificación (Credly/Coursera) para las certs Tier-1 restantes (solo Google tiene link hoy); versión redactada de `talento_digital.png` sin cédula si se quiere mostrar con imagen; montar ESLint flat config (`npm run lint` roto, ver AUDIT.md M-6).
+- ⚠️ Docs personales (CVs, PDFs con cédula/teléfono) viven en `_source-docs/` - **gitignored**. Además `public/images/certificates/talento_digital.png` está **gitignored** (expone cédula + QR): nunca publicar sin redactar.
+- 📄 Auditoría completa vigente en `AUDIT.md` (raíz).
 
 ---
 
@@ -465,6 +469,10 @@ EDUCATION:
 | `path` / `__dirname` no encontrados en vite.config | Falta `@types/node` | `npm i -D @types/node` + `"types": ["node"]` en tsconfig.node | Instalar @types/node desde el inicio en proyectos Vite |
 | Tipos de traducción incompatibles (es vs en) | `as const` estrecha los literales; `"Home"` no asignable a `"Inicio"` | Quitar `as const` del objeto translations; los valores se ensanchan a `string` | No usar `as const` en diccionarios i18n con misma forma |
 | Contenido invisible en tab de fondo | Chrome estrangula rAF en tabs inactivas → GSAP `.from()` y framer `whileInView` quedan en opacity:0 | Guard con `window.setTimeout` (independiente de rAF) que fuerza estado final visible | Toda animación de entrada que oculta contenido necesita fallback de reloj |
+| Título de cert no coincide con su imagen | `fortinet-nse1` decía "Technical Introduction to Cybersecurity 3.0" pero el badge dice "NSE 1 - Threat Landscape" | Corregir el título al que muestra el badge real | Verificar cada imagen de cert contra su `title` en `data/certifications.ts` |
+| Imagen de cert expone PII | `talento_digital.png` muestra cédula (40215354255) + QR con datos personales | No publicarla: listar el cert como texto y gitignorear la imagen | Revisar visualmente toda imagen antes de publicarla; cédula/QR = privacidad |
+| `og:image` roto → links sin preview | `index.html` apuntaba a `/images/og-image.png` inexistente y con ruta relativa | Generar PNG real 1200×630 + URLs absolutas + `twitter:image`/`canonical` | og:image debe existir, ser PNG/JPG y usar URL absoluta |
+| Modal sin accesibilidad de teclado | `ProjectModal` no cerraba con Esc, sin focus-trap ni scroll-lock | `useEffect` con keydown Esc + trap Tab + `body.overflow` + restauración de foco + `role=dialog` | Todo modal necesita Esc, trap de foco, scroll-lock y restaurar foco |
 
 ### Lección clave - Robustez de animaciones
 Cualquier animación que empiece en `opacity: 0` (GSAP `.from`, framer `initial`) debe tener
