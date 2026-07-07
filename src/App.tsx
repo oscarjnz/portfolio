@@ -29,8 +29,8 @@ export default function App() {
           <About />
           <Skills />
           <Work />
-          <Certifications />
           <Experience />
+          <Certifications />
           <Beyond />
           <Contact />
         </Suspense>
