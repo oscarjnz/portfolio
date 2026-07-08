@@ -1,12 +1,10 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { heroRoles } from "@/data/about";
 import { SITE, HERO_VIDEO_SRC } from "@/utils/constants";
 
 export default function Hero() {
   const { t, lang } = useLanguage();
-  const rootRef = useRef<HTMLDivElement>(null);
   const [roleIndex, setRoleIndex] = useState(0);
 
   // Cycle hero roles every 2s.
@@ -18,49 +16,11 @@ export default function Hero() {
     return () => clearInterval(id);
   }, []);
 
-  // GSAP entrance timeline.
-  useLayoutEffect(() => {
-    let guard = 0;
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    const ctx = gsap.context(() => {
-      const targets = ".name-reveal, .blur-in";
-      if (prefersReduced) {
-        gsap.set(targets, { opacity: 1, y: 0, filter: "none" });
-        return;
-      }
-
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".name-reveal", { opacity: 0, y: 50, duration: 1.2, delay: 0.1 });
-      tl.from(
-        ".blur-in",
-        { opacity: 0, filter: "blur(10px)", y: 20, duration: 1, stagger: 0.1 },
-        0.3,
-      );
-
-      // Safety guard: unconditionally settle to the final visible state after
-      // the entrance would have finished. window.setTimeout is independent of
-      // GSAP's rAF ticker, so content is never left hidden even if rAF is
-      // throttled (background tab, slow device). Harmless once the tween ran.
-      guard = window.setTimeout(() => {
-        gsap.set(targets, { opacity: 1, y: 0, filter: "none" });
-      }, 2600);
-    }, rootRef);
-
-    return () => {
-      ctx.revert();
-      window.clearTimeout(guard);
-    };
-  }, []);
-
   const role = heroRoles[roleIndex][lang];
 
   return (
     <section
       id="home"
-      ref={rootRef}
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
       {/* Background video */}
@@ -81,15 +41,21 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center px-6 text-center">
-        <p className="blur-in mb-8 text-xs uppercase tracking-[0.3em] text-muted">
+        <p
+          className="animate-blur-in mb-8 text-xs uppercase tracking-[0.3em] text-muted"
+          style={{ animationDelay: "0.3s" }}
+        >
           {t.hero.eyebrow}
         </p>
 
-        <h1 className="name-reveal mb-6 font-display text-6xl italic leading-[0.9] tracking-tight text-text-primary md:text-8xl lg:text-[9rem]">
+        <h1 className="animate-name-reveal mb-6 font-display text-6xl italic leading-[0.9] tracking-tight text-text-primary md:text-8xl lg:text-[9rem]">
           {SITE.name}
         </h1>
 
-        <p className="blur-in mb-8 text-lg text-text-primary/90 md:text-2xl">
+        <p
+          className="animate-blur-in mb-8 text-lg text-text-primary/90 md:text-2xl"
+          style={{ animationDelay: "0.4s" }}
+        >
           {t.hero.intro}{" "}
           <span
             key={roleIndex}
@@ -100,11 +66,17 @@ export default function Hero() {
           {t.hero.roleConnector}
         </p>
 
-        <p className="blur-in mb-12 max-w-lg text-sm text-muted md:text-base">
+        <p
+          className="animate-blur-in mb-12 max-w-lg text-sm text-muted md:text-base"
+          style={{ animationDelay: "0.5s" }}
+        >
           {t.hero.description}
         </p>
 
-        <div className="blur-in inline-flex flex-col gap-4 sm:flex-row">
+        <div
+          className="animate-blur-in inline-flex flex-col gap-4 sm:flex-row"
+          style={{ animationDelay: "0.6s" }}
+        >
           <button
             onClick={() =>
               document
