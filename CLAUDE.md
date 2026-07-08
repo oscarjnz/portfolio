@@ -1,9 +1,17 @@
 # Portfolio Oscar Jimenez - CLAUDE.md
 
-**Última actualización:** 2026-07-07  
+**Última actualización:** 2026-07-08  
 **Propósito:** Base central de conocimientos, decisiones de arquitectura, errores documentados, y evolución del proyecto.
 
-## ESTADO ACTUAL (2026-07-07)
+## PRINCIPIO OPERATIVO (leer primero)
+Este archivo es **la memoria y la mente activa del proyecto**. No es documentación pasiva: es el estado vivo desde el que se trabaja.
+- **Actualización automática:** al terminar CUALQUIER tarea (feature, fix, refactor, decisión), se actualiza esta sección de estado y, si aplica, la tabla de errores/lecciones. No hace falta que el usuario lo pida; es parte de completar la tarea.
+- **Aprende de errores y fallos:** cada bug, mal supuesto o corrección se registra en la tabla de "ERRORES DOCUMENTADOS & LECCIONES" con causa, solución y cómo evitarlo. La misma falla no se repite dos veces.
+- **Fuente de verdad:** ante conflicto entre lo que se recuerda y lo que dice este archivo, gana este archivo (y se corrige si quedó desactualizado).
+
+## ESTADO ACTUAL (2026-07-08)
+- ✅ Hero: se quitó el tagline de ubicación ("con base en Santo Domingo" / "based in Santo Domingo"). El Home ahora solo dice **"Soy `{rol}`."**. La ubicación podría mostrarse a futuro con un mapa u otro recurso visual (idea pendiente, no implementada).
+- ✅ Enlaces contextuales: menciones de **UNIBE** enlazan a `https://unibe.edu.do` en trayectoria (trabajo + estudios) y en el párrafo de "Sobre mí" (link inyectado con `renderParagraph` que parte el texto en "UNIBE"). **FIFA** enlaza al programa oficial de voluntarios del torneo. Se agregó campo opcional `organizationUrl` en `ExperienceItem` (`data/types.ts`) y render condicional como `<a target="_blank" rel="noopener noreferrer">` en `Experience.tsx`.
 - ✅ Sitio completo construido y en GitHub (`oscarjnz/portfolio`), desplegado en Vercel.
 - ✅ Orden de secciones: Loading → Hero → Sobre mí → Skills → **Proyectos → Trayectoria → Certificaciones** → Beyond → Contacto. (Certifications ahora va DESPUÉS de Experience: reclutadores técnicos priorizan proyectos/experiencia real sobre certificados.)
 - ✅ Certificaciones: 5 Tier-1 (feature cards con imagen: Google, Microsoft, Fortinet NSE 1, Cisco Ethical Hacker, Cisco Intro) + Tier-2 con thumbnails de imagen (3 Fortinet Fundamentals, 2 módulos Cisco CCNA, Networking Basics, English for IT) + pills de texto (Talento Digital, Hacker Mentor, NDG Linux, Tier-3). Google tiene `credentialUrl` verificable (Coursera).
