@@ -1,6 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import gsap from "gsap";
 import { Github, Linkedin, Instagram, ArrowUpRight, Download } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { SITE, SOCIAL, HERO_VIDEO_SRC } from "@/utils/constants";
@@ -10,19 +8,6 @@ const MARQUEE_TEXT = "BUILDING · SECURING · AUTOMATING · ";
 
 export default function Contact() {
   const { t, lang } = useLanguage();
-  const marqueeRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(".marquee-track", {
-        xPercent: -50,
-        duration: 40,
-        ease: "none",
-        repeat: -1,
-      });
-    }, marqueeRef);
-    return () => ctx.revert();
-  }, []);
 
   const year = new Date().getFullYear();
 
@@ -49,8 +34,8 @@ export default function Contact() {
 
       <div className="relative z-10">
         {/* Marquee */}
-        <div ref={marqueeRef} className="mb-16 overflow-hidden md:mb-24">
-          <div className="marquee-track flex whitespace-nowrap">
+        <div className="mb-16 overflow-hidden md:mb-24">
+          <div className="animate-marquee flex whitespace-nowrap">
             {Array.from({ length: 8 }).map((_, i) => (
               <span
                 key={i}

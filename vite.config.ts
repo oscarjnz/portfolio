@@ -17,8 +17,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ["react", "react-dom"],
-          animations: ["gsap", "framer-motion"],
-          // hls.js is dynamically imported, so Vite splits it automatically.
+          animations: ["framer-motion"],
         },
       },
     },
