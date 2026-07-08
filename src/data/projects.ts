@@ -13,11 +13,11 @@ export const projects: Project[] = [
       en: "A platform that inventories your network devices, detects exposed ports and services, and alerts you to changes or threats. All scanning runs on a local agent that never exposes your network to the internet, outbound WSS connections only. An AI assistant interprets every result.",
     },
     url: "https://securitysmartservices.site",
-    image: "/images/projects/sss-landing.png",
+    image: "/images/projects/sss-landing.webp",
     gallery: [
-      "/images/projects/sss-landing.png",
-      "/images/projects/sss-dashboard.png",
-      "/images/projects/sss-geoloc.png",
+      "/images/projects/sss-landing.webp",
+      "/images/projects/sss-dashboard.webp",
+      "/images/projects/sss-geoloc.webp",
     ],
     tags: [
       "React 18",
@@ -45,7 +45,7 @@ export const projects: Project[] = [
       en: "Nutrition management app for anyone pursuing weight gain, loss, maintenance or muscle building. Logs meals, tracks daily macros (protein, carbs, fat) against your goals, and includes meal plans and fasting control. Zero-cost infrastructure.",
     },
     url: "https://nutriflow-sigma.vercel.app",
-    image: "/images/projects/nutriflow.png",
+    image: "/images/projects/nutriflow.webp",
     tags: ["Next.js", "Supabase", "Groq AI", "TypeScript", "Tailwind"],
     status: "live",
     year: "2025",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
       en: "Academic task tool that ingests a Blackboard (Anthology) calendar, shows weekly tasks with pending/done status and exports reports as PDF, TXT or PNG. Includes a Telegram bot that sends weekly reports on your chosen day, plus scheduled email delivery.",
     },
     url: "https://activecalendar.site",
-    image: "/images/projects/active-calendar.png",
+    image: "/images/projects/active-calendar.webp",
     tags: [
       "Cloudflare Workers",
       "Supabase",
@@ -84,7 +84,7 @@ export const projects: Project[] = [
       en: "Productivity dashboard with customizable widgets (size, color, views), cloud-synced via your Google account. Clock, weather, traffic, unread email, Spotify control, calendar, notes, bookmarks, crypto, currency, sports scores and an AI assistant. Built for multi-monitor setups.",
     },
     url: "https://productivity-os-beryl.vercel.app/",
-    image: "/images/projects/productivity-os.png",
+    image: "/images/projects/productivity-os.webp",
     tags: [
       "React",
       "Google OAuth",
