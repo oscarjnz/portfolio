@@ -50,9 +50,20 @@ export default function Experience() {
                     <h3 className="mt-1 text-lg text-text-primary md:text-xl">
                       {item.role[lang]}
                     </h3>
-                    <p className="accent-gradient-text text-sm font-medium">
-                      {item.organization}
-                    </p>
+                    {item.organizationUrl ? (
+                      <a
+                        href={item.organizationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="accent-gradient-text text-sm font-medium underline decoration-transparent underline-offset-4 transition-colors hover:decoration-current"
+                      >
+                        {item.organization}
+                      </a>
+                    ) : (
+                      <p className="accent-gradient-text text-sm font-medium">
+                        {item.organization}
+                      </p>
+                    )}
                     <p className="mt-3 text-sm leading-relaxed text-muted">
                       {item.description[lang]}
                     </p>

@@ -47,6 +47,7 @@ export interface ExperienceItem {
   id: string;
   role: Localized;
   organization: string;
+  organizationUrl?: string; // official site / program link, when relevant
   period: Localized;
   description: Localized;
   type: "work" | "education" | "volunteer";

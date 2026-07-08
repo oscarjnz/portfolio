@@ -62,7 +62,7 @@ export default function Hero() {
             className="inline-block animate-role-fade-in font-display italic text-text-primary"
           >
             {role}
-          </span>{" "}
+          </span>
           {t.hero.roleConnector}
         </p>
 

@@ -1,8 +1,30 @@
+import { Fragment } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { aboutParagraphs, stats } from "@/data/about";
 import { SITE } from "@/utils/constants";
 import SectionHeader from "@/components/ui/SectionHeader";
+
+const UNIBE_URL = "https://unibe.edu.do";
+
+// Render a paragraph, turning any "UNIBE" mention into a link.
+function renderParagraph(text: string) {
+  return text.split("UNIBE").map((part, i, parts) => (
+    <Fragment key={i}>
+      {part}
+      {i < parts.length - 1 && (
+        <a
+          href={UNIBE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-text-primary underline decoration-stroke underline-offset-4 transition-colors hover:decoration-current"
+        >
+          UNIBE
+        </a>
+      )}
+    </Fragment>
+  ));
+}
 
 export default function About() {
   const { t, lang } = useLanguage();
@@ -65,7 +87,7 @@ export default function About() {
                   transition={{ duration: 0.7, delay: i * 0.1 }}
                   className="text-base leading-relaxed text-muted md:text-lg"
                 >
-                  {p[lang]}
+                  {renderParagraph(p[lang])}
                 </motion.p>
               ))}
             </div>
