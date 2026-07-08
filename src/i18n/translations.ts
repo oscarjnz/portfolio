@@ -15,7 +15,7 @@ export const translations = {
     hero: {
       eyebrow: "PORTAFOLIO · 2026",
       intro: "Soy",
-      roleConnector: "con base en Santo Domingo.",
+      roleConnector: ".",
       description:
         "Construyo aplicaciones web full-stack y protejo sistemas. Ciberseguridad, desarrollo y automatización con un mismo estándar: hacerlo bien.",
       ctaWork: "Ver proyectos",
@@ -92,7 +92,7 @@ export const translations = {
     hero: {
       eyebrow: "PORTFOLIO · 2026",
       intro: "I'm a",
-      roleConnector: "based in Santo Domingo.",
+      roleConnector: ".",
       description:
         "I build full-stack web applications and secure systems. Cybersecurity, development and automation held to one standard: doing it right.",
       ctaWork: "See work",

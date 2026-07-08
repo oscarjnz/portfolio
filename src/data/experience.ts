@@ -8,6 +8,7 @@ export const experience: ExperienceItem[] = [
       en: "CRM Assistant · Cybersecurity Analyst · Jr. Developer",
     },
     organization: "Universidad Iberoamericana (UNIBE)",
+    organizationUrl: "https://unibe.edu.do",
     period: { es: "Jul 2025 - Actualidad", en: "Jul 2025 - Present" },
     description: {
       es: "Implementación y gestión del CRM institucional dentro del departamento de TIC, mapeando flujos y optimizando procesos. Evaluaciones de vulnerabilidades y monitoreo de red. Mantenimiento y mejora del sitio institucional (WordPress / Breakdance).",
@@ -22,6 +23,8 @@ export const experience: ExperienceItem[] = [
       en: "Official volunteer · Media operations and services",
     },
     organization: "FIFA U-17 Women's World Cup 2024",
+    organizationUrl:
+      "https://www.fifa.com/en/tournaments/womens/u17womensworldcup/dominican-republic-2024/articles/registration-process-open-volunteer-programme",
     period: { es: "Oct - Nov 2024", en: "Oct - Nov 2024" },
     description: {
       es: "Soporte logístico y coordinación de eventos en un torneo internacional de alto perfil, colaborando con equipos multiculturales bajo condiciones operativas exigentes.",
@@ -36,6 +39,7 @@ export const experience: ExperienceItem[] = [
       en: "B.Eng. Information and Communications Technology",
     },
     organization: "Universidad Iberoamericana (UNIBE)",
+    organizationUrl: "https://unibe.edu.do",
     period: {
       es: "2023 - 2027 · 9.º semestre",
       en: "2023 - 2027 · 9th semester",
