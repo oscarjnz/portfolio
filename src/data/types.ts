@@ -30,8 +30,9 @@ export interface Certification {
   title: string;
   issuer: string;
   date: string;
-  image?: string;
-  credentialUrl?: string; // public verification link, when available
+  image?: string; // card visual: the Credly badge icon, when available
+  certificateImage?: string; // full certificate/diploma shown in the popup, if different from the badge
+  credentialUrl?: string; // public verification link (Credly), when available
   tier: 1 | 2 | 3;
   category: "cybersecurity" | "networking" | "development" | "business";
 }
