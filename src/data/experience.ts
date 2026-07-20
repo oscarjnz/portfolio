@@ -11,8 +11,8 @@ export const experience: ExperienceItem[] = [
     organizationUrl: "https://unibe.edu.do",
     period: { es: "Jul 2025 - Actualidad", en: "Jul 2025 - Present" },
     description: {
-      es: "Implementación y gestión del CRM institucional dentro del departamento de TIC, mapeando flujos y optimizando procesos. Evaluaciones de vulnerabilidades y monitoreo de red. Mantenimiento y mejora del sitio institucional (WordPress / Breakdance).",
-      en: "Implementation and management of the institutional CRM within the IT department, mapping workflows and optimizing processes. Vulnerability assessments and network monitoring. Maintenance and improvement of the institutional website (WordPress / Breakdance).",
+      es: "Implementación y gestión del CRM institucional dentro del departamento de TIC, mapeando flujos y optimizando procesos. Evaluaciones de vulnerabilidades, monitoreo de red y administración de servidores. Mantenimiento y mejora del sitio institucional (WordPress / Breakdance).",
+      en: "Implementation and management of the institutional CRM within the IT department, mapping workflows and optimizing processes. Vulnerability assessments, network monitoring and server administration. Maintenance and improvement of the institutional website (WordPress / Breakdance).",
     },
     type: "work",
   },
