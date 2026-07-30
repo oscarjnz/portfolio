@@ -9,7 +9,16 @@ Este archivo es **la memoria y la mente activa del proyecto**. No es documentaci
 - **Aprende de errores y fallos:** cada bug, mal supuesto o corrección se registra en la tabla de "ERRORES DOCUMENTADOS & LECCIONES" con causa, solución y cómo evitarlo. La misma falla no se repite dos veces.
 - **Fuente de verdad:** ante conflicto entre lo que se recuerda y lo que dice este archivo, gana este archivo (y se corrige si quedó desactualizado).
 
-## ESTADO ACTUAL (2026-07-08)
+## ESTADO ACTUAL (2026-07-30)
+- ✅ **2026-07-30:** Ajuste de tono a pedido de Oscar ("suena mucho a IA, poca experiencia"). Cambios:
+  - `heroRoles` (`src/data/about.ts`) pasó de 4 a 3 roles: se quitó "Atleta"/"Athlete" (ya no compite con la identidad profesional en el Hero) y "Entusiasta de la ciberseguridad"/"Cybersecurity enthusiast" pasó a **"Analista de ciberseguridad"/"Cybersecurity analyst"** (coincide con `about.subtext` y con el rol real en `experience.ts`, gana consistencia).
+  - Sección **`Beyond` eliminada por completo** (`src/components/sections/Beyond.tsx`, `src/data/beyond.ts`, bloque `beyond` en `src/i18n/translations.ts` es/en, import y render en `App.tsx`). El orden de secciones ahora termina en Certificaciones → Contacto.
+  - El párrafo 3 de "Sobre mí" (`aboutParagraphs[2]` en `about.ts`) se recortó: se quitó la frase de cierre tipo "esa mentalidad... es la misma que llevo al código" (patrón de bridging genérico de IA). Queda solo el dato concreto: 12 años de béisbol competitivo, sabermetría, recomposición corporal.
+  - `about.subtext` (es/en, `translations.ts`) perdió "Atleta de toda la vida"/"Lifelong athlete"; queda solo lo profesional.
+  - Stat "12 · Años de béisbol" se quitó del grid de `stats` en `about.ts` (competía con métricas profesionales sin la sección Beyond alrededor). El grid pasó de `grid-cols-2 sm:grid-cols-4 lg:grid-cols-2` (4 items) a `grid-cols-3` fijo (3 items) en `About.tsx`.
+  - Lo del béisbol/atletismo se mantiene mencionado (no se eliminó del todo), pero en una sola frase corta dentro del párrafo largo de About, no como sección ni como tag destacado.
+
+## ESTADO ANTERIOR (2026-07-08)
 - ✅ Hero: se quitó el tagline de ubicación ("con base en Santo Domingo" / "based in Santo Domingo"). El Home ahora solo dice **"Soy `{rol}`."**. La ubicación podría mostrarse a futuro con un mapa u otro recurso visual (idea pendiente, no implementada).
 - ✅ Enlaces contextuales: menciones de **UNIBE** enlazan a `https://unibe.edu.do` en trayectoria (trabajo + estudios) y en el párrafo de "Sobre mí" (link inyectado con `renderParagraph` que parte el texto en "UNIBE"). **FIFA** enlaza al programa oficial de voluntarios del torneo. Se agregó campo opcional `organizationUrl` en `ExperienceItem` (`data/types.ts`) y render condicional como `<a target="_blank" rel="noopener noreferrer">` en `Experience.tsx`.
 - ✅ Sitio completo construido y en GitHub (`oscarjnz/portfolio`), desplegado en Vercel.

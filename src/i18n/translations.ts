@@ -26,8 +26,7 @@ export const translations = {
       eyebrow: "Sobre mí",
       heading: "Quién",
       headingItalic: "soy",
-      subtext:
-        "Estudiante de Ingeniería TIC, analista de ciberseguridad y desarrollador. Atleta de toda la vida.",
+      subtext: "Estudiante de Ingeniería TIC, analista de ciberseguridad y desarrollador.",
     },
     skills: {
       eyebrow: "Stack técnico",
@@ -58,13 +57,6 @@ export const translations = {
       heading: "Experiencia y",
       headingItalic: "educación",
       subtext: "De las aulas al departamento de TI.",
-    },
-    beyond: {
-      eyebrow: "Fuera del teclado",
-      heading: "Mentalidad de",
-      headingItalic: "atleta",
-      subtext:
-        "Casi 12 años de béisbol competitivo. Sigo el juego desde la sabermetría y hoy aplico la misma disciplina a la recomposición corporal, y al código.",
     },
     contact: {
       eyebrow: "Contacto",
@@ -103,8 +95,7 @@ export const translations = {
       eyebrow: "About",
       heading: "Who I",
       headingItalic: "am",
-      subtext:
-        "ICT Engineering student, cybersecurity analyst and developer. Lifelong athlete.",
+      subtext: "ICT Engineering student, cybersecurity analyst and developer.",
     },
     skills: {
       eyebrow: "Tech stack",
@@ -135,13 +126,6 @@ export const translations = {
       heading: "Experience and",
       headingItalic: "education",
       subtext: "From the classroom to the IT department.",
-    },
-    beyond: {
-      eyebrow: "Beyond the keyboard",
-      heading: "Athlete's",
-      headingItalic: "mindset",
-      subtext:
-        "Nearly 12 years of competitive baseball. I follow the game through sabermetrics and today apply the same discipline to body recomposition, and to code.",
     },
     contact: {
       eyebrow: "Contact",

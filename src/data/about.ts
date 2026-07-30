@@ -2,10 +2,9 @@ import type { Localized } from "./types";
 
 // Roles that cycle in the hero animation.
 export const heroRoles: Localized[] = [
-  { es: "Entusiasta de la ciberseguridad", en: "Cybersecurity enthusiast" },
+  { es: "Analista de ciberseguridad", en: "Cybersecurity analyst" },
   { es: "Desarrollador web", en: "Web developer" },
   { es: "Estudiante de Ingeniería TIC", en: "ICT engineering student" },
-  { es: "Atleta", en: "Athlete" },
 ];
 
 export const aboutParagraphs: Localized[] = [
@@ -18,8 +17,8 @@ export const aboutParagraphs: Localized[] = [
     en: "My foundation is blue team (monitoring, SIEM and network forensics), but I also do red team: web exploitation, CTFs and pentesting. I build full-stack apps end to end, deploying and administering the servers and VPS instances they run on myself (Cloudflare Workers, Fly.io, Render, Docker), and automate whatever I can with bots and AI.",
   },
   {
-    es: "Fuera del teclado, soy atleta de toda la vida. Jugué béisbol competitivo casi 12 años y sigo el deporte de cerca, desde la sabermetría hasta la recomposición corporal. Esa mentalidad de disciplina y mejora constante es la misma que llevo al código.",
-    en: "Away from the keyboard, I'm a lifelong athlete. I played competitive baseball for nearly 12 years and follow sports closely, from sabermetrics to body recomposition. That mindset of discipline and constant improvement is the same one I bring to code.",
+    es: "Fuera del teclado, jugué béisbol competitivo casi 12 años y sigo el deporte de cerca, desde la sabermetría hasta la recomposición corporal.",
+    en: "Away from the keyboard, I played competitive baseball for nearly 12 years and still follow the sport closely, from sabermetrics to body recomposition.",
   },
 ];
 
@@ -28,5 +27,4 @@ export const stats: { value: string; label: Localized }[] = [
   { value: "2+", label: { es: "Años en tech", en: "Years in tech" } },
   { value: "4", label: { es: "Proyectos en vivo", en: "Live projects" } },
   { value: "16+", label: { es: "Certificaciones", en: "Certifications" } },
-  { value: "12", label: { es: "Años de béisbol", en: "Years of baseball" } },
 ];
