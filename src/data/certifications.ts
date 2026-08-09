@@ -24,6 +24,20 @@ export const certifications: Certification[] = [
     category: "cybersecurity",
   },
   {
+    // Capstone del career path de Cisco: agrupa los 3 módulos de networking
+    // que aparecen en tier 2 (basics, devices, addressing) + soporte y
+    // seguridad de red. Sin credentialUrl todavía: falta el link público de
+    // Credly en public/images/badges/public_badge_link.txt.
+    id: "cisco-network-technician",
+    title: "Network Technician Career Path",
+    issuer: "Cisco Networking Academy",
+    date: "2026-08",
+    image: "/images/badges/network-technician-career-path.png",
+    certificateImage: "/images/certificates/network-technician-career-path.webp",
+    tier: 1,
+    category: "networking",
+  },
+  {
     id: "microsoft-cybersecurity-architect",
     title: "Microsoft Cybersecurity Architect",
     issuer: "Microsoft · Gold Learning Partner",

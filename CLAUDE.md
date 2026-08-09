@@ -9,7 +9,14 @@ Este archivo es **la memoria y la mente activa del proyecto**. No es documentaci
 - **Aprende de errores y fallos:** cada bug, mal supuesto o corrección se registra en la tabla de "ERRORES DOCUMENTADOS & LECCIONES" con causa, solución y cómo evitarlo. La misma falla no se repite dos veces.
 - **Fuente de verdad:** ante conflicto entre lo que se recuerda y lo que dice este archivo, gana este archivo (y se corrige si quedó desactualizado).
 
-## ESTADO ACTUAL (2026-07-30)
+## ESTADO ACTUAL (2026-08-09)
+- ✅ **2026-08-09:** Nueva certificación **Network Technician Career Path** (Cisco Networking Academy, 09 ago 2026, Cert ID `175a37f0-fc2e-4024-a537-707efe384006`). Se agregó como **tier 1** (segunda tarjeta, justo después de Google) porque es el capstone del career path que agrupa los 3 módulos Cisco de networking que ya estaban en tier 2 (Networking Basics, Network Devices and Initial Configuration, Network Addressing and Basic Troubleshooting) + soporte y seguridad de red; además deja el grid de tier 1 en 6 tarjetas (3×2 exacto en `lg`).
+  - Badge: `public/images/badges/network-technician-career-path.png` (llegó suelto en `certificates/`, se movió a `badges/` para respetar la convención).
+  - Certificado: `public/images/certificates/network-technician-career-path.webp` (1400×949, 61KB), generado con Pillow desde el JPG original a `quality=82, method=6`. El JPG crudo (`Network_Technician_Career_Path_certificate.jpg`) se conserva en el repo igual que los PDFs crudos de las otras certs.
+  - ⚠️ **Sin `credentialUrl`**: no hay link público de Credly en `public/images/badges/public_badge_link.txt` para esta credencial, así que el modal no muestra botón "Verificar". Pendiente pedirle a Oscar el public URL de Credly y agregarlo.
+  - Nota de herramientas: el repo **no** tiene `sharp` ni ImageMagick; para convertir imágenes usar `python` + Pillow (12.3.0, ya instalado en la máquina).
+
+## ESTADO ANTERIOR (2026-07-30)
 - ✅ **2026-07-30:** Ajuste de tono a pedido de Oscar ("suena mucho a IA, poca experiencia"). Cambios:
   - `heroRoles` (`src/data/about.ts`) pasó de 4 a 3 roles: se quitó "Atleta"/"Athlete" (ya no compite con la identidad profesional en el Hero) y "Entusiasta de la ciberseguridad"/"Cybersecurity enthusiast" pasó a **"Analista de ciberseguridad"/"Cybersecurity analyst"** (coincide con `about.subtext` y con el rol real en `experience.ts`, gana consistencia).
   - Sección **`Beyond` eliminada por completo** (`src/components/sections/Beyond.tsx`, `src/data/beyond.ts`, bloque `beyond` en `src/i18n/translations.ts` es/en, import y render en `App.tsx`). El orden de secciones ahora termina en Certificaciones → Contacto.
