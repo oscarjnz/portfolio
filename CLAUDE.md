@@ -1,6 +1,6 @@
 # Portfolio Oscar Jimenez - CLAUDE.md
 
-**Última actualización:** 2026-08-16 (tarde)  
+**Última actualización:** 2026-08-16 (noche)  
 **Propósito:** Base central de conocimientos, decisiones de arquitectura, errores documentados, y evolución del proyecto.
 
 ## PRINCIPIO OPERATIVO (leer primero)
@@ -10,6 +10,12 @@ Este archivo es **la memoria y la mente activa del proyecto**. No es documentaci
 - **Fuente de verdad:** ante conflicto entre lo que se recuerda y lo que dice este archivo, gana este archivo (y se corrige si quedó desactualizado).
 
 ## ESTADO ACTUAL (2026-08-16)
+- ✅ **2026-08-16 (noche):** Indexación SEO en Google (diagnóstico + fixes) y limpieza de historial de git.
+  - **Diagnóstico:** `robots.txt` y `sitemap.xml` ya servían 200 con contenido correcto (no interceptados por ningún rewrite de SPA; el sitio es one-page así que no hace falta catch-all). Dominio canónico confirmado por `<link rel="canonical">` y `og:url`: **`https://osnarci.online/`** (apex, sin `www`).
+  - **Fix 1 - `sitemap.xml` sin `lastmod`:** el único `<url>` (home) no traía fecha de última modificación. Se agregó `<lastmod>2026-08-16</lastmod>` (fecha real del último commit de contenido, vía `git log`), no la fecha de generación del sitemap.
+  - **Fix 2 - `www` sin redirect:** `https://www.osnarci.online` servía el mismo HTML que el apex con 200 OK (mismo ETag) en vez de redirigir, riesgo de contenido duplicado para Google pese a que canonical/og:url ya apuntan al apex. Se agregó un bloque `redirects` en `vercel.json` (`host: www.osnarci.online` → `https://osnarci.online/$1`, 308 permanent). Verificado en vivo: `www` ahora devuelve 308 con `Location: https://osnarci.online/`.
+  - **⚠️ Hallazgo fuera de alcance, resuelto con permiso explícito:** se encontraron **26 commits históricos** (jul 2026, desde `6Z5agJq`... hasta `cac0f36`/`319cb7a`) con el trailer `Co-Authored-By: Claude ... <noreply@anthropic.com>` en este repo **público**, violando la regla global de CLAUDE.md que prohíbe atribución de IA en cualquier repo (ya había pasado antes en S.S.S., ver esa sección para el patrón). Con confirmación explícita del usuario se corrió `git filter-repo --force --message-callback` (regex que borra la línea `Co-Authored-By: Claude...` de cada mensaje) y `git push --force origin main`. Verificado: 0 commits con el trailer tras la reescritura, remote `origin` re-agregado y upstream tracking restaurado. El repo no tiene tags (no hubo que reapuntar releases) y es proyecto solo-autor (no hay otros colaboradores con clones que reconciliar).
+  - Pendiente de acción manual del usuario (no delegable, requiere su cuenta Google): dar de alta la propiedad en Google Search Console (tipo Dominio recomendado si tiene acceso a DNS de osnarci.online; si no, Prefijo de URL con `https://osnarci.online/`), verificarla, enviar el sitemap y solicitar indexación de la home. Ver instrucciones detalladas entregadas en el chat de esa sesión.
 - ✅ **2026-08-16 (tarde):** Estado académico de 3 fases + CV singular sin "elige tu región".
   - **Nuevo `src/data/academicStatus.ts`** centraliza todo el copy que cambia según la fase académica de Oscar (`AcademicStatus` = `"student" | "graduate" | "engineer"`, definido en `academicTerm.ts`): rol del Hero, subtext y párrafo de apertura de About, y rol/descripción de la entrada UNIBE en Experience. `getAcademicStatus()` compara la fecha del sistema contra dos hitos: fin de cursada (31-ago-2027, cierre del cuatrimestre 12) y ceremonia de graduación (**1-nov-2027, fecha placeholder** — Oscar dio "noviembre" sin día exacto, confirmar y ajustar `CEREMONY_DATE` en `academicTerm.ts` cuando se sepa la fecha real de colación).
     - **student** (hoy → 31-ago-2027): como estaba, "Estudiante de Ingeniería TIC" + cuatrimestre dinámico. Se le agregó mención a las 2 concentraciones (**Ciberseguridad y Desarrollo de Software**) en el párrafo de About y en la descripción de Experience, ya que Oscar confirmó que son las concentraciones con las que egresa.
