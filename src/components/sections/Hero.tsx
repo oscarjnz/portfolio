@@ -56,7 +56,6 @@ export default function Hero() {
           className="animate-blur-in mb-8 text-lg text-text-primary/90 md:text-2xl"
           style={{ animationDelay: "0.4s" }}
         >
-          {t.hero.intro}{" "}
           <span
             key={roleIndex}
             className="inline-block animate-role-fade-in font-display italic text-text-primary"

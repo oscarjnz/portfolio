@@ -1,15 +1,41 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Instagram, ArrowUpRight, Download } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { SITE, SOCIAL, HERO_VIDEO_SRC } from "@/utils/constants";
 import { resumes } from "@/data/resumes";
+import { detectResumeByLocation } from "@/utils/geoResume";
+import type { Resume } from "@/data/types";
 
 const MARQUEE_TEXT = "BUILDING · SECURING · AUTOMATING · ";
+
+// "loading" while the IP lookup runs, "all" if it fails or is inconclusive
+// (never leave the visitor with zero download options), or a single Resume id.
+type ResumeVisibility = "loading" | "all" | Resume["id"];
 
 export default function Contact() {
   const { t, lang } = useLanguage();
 
   const year = new Date().getFullYear();
+
+  const [resumeVisibility, setResumeVisibility] = useState<ResumeVisibility>("loading");
+
+  useEffect(() => {
+    let cancelled = false;
+    detectResumeByLocation().then((id) => {
+      if (!cancelled) setResumeVisibility(id ?? "all");
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const visibleResumes =
+    resumeVisibility === "loading"
+      ? []
+      : resumeVisibility === "all"
+        ? resumes
+        : resumes.filter((r) => r.id === resumeVisibility);
 
   return (
     <footer
@@ -88,7 +114,10 @@ export default function Contact() {
                 {t.contact.resumeSubtext}
               </p>
               <div className="mx-auto mt-6 flex max-w-2xl flex-col gap-3 sm:flex-row sm:justify-center">
-                {resumes.map((resume) => (
+                {resumeVisibility === "loading" && (
+                  <div className="h-[74px] flex-1 animate-pulse rounded-2xl border border-stroke bg-surface/40" />
+                )}
+                {visibleResumes.map((resume) => (
                   <a
                     key={resume.id}
                     href={resume.file}

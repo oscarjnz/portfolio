@@ -24,7 +24,7 @@ export const experience: ExperienceItem[] = [
     },
     organization: "FIFA U-17 Women's World Cup 2024",
     organizationUrl:
-      "https://www.fifa.com/en/tournaments/womens/u17womensworldcup/dominican-republic-2024/articles/registration-process-open-volunteer-programme",
+      "https://www.fifa.com/en/tournaments/womens/u17womensworldcup/dominican-republic-2024",
     period: { es: "Oct - Nov 2024", en: "Oct - Nov 2024" },
     description: {
       es: "Soporte logístico y coordinación de eventos en un torneo internacional de alto perfil, colaborando con equipos multiculturales bajo condiciones operativas exigentes.",
@@ -35,14 +35,15 @@ export const experience: ExperienceItem[] = [
   {
     id: "unibe-degree",
     role: {
-      es: "Ing. en Tecnologías de la Información y Comunicación",
-      en: "B.Eng. Information and Communications Technology",
+      es: "Ingeniería en Tecnologías Computacionales (TIC)",
+      en: "Engineering in Computer Technologies (TIC)",
     },
     organization: "Universidad Iberoamericana (UNIBE)",
     organizationUrl: "https://unibe.edu.do",
+    // Cuatrimestre appended dynamically in Experience.tsx via getCurrentTerm().
     period: {
-      es: "2023 - 2027 · 9.º semestre",
-      en: "2023 - 2027 · 9th semester",
+      es: "2023 - 2027",
+      en: "2023 - 2027",
     },
     description: {
       es: "Formación en desarrollo de software, ciberseguridad, redes y tecnologías web. Proyectos académicos en bases de datos relacionales, simuladores de arquitectura de procesadores y herramientas con integración de APIs.",

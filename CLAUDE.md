@@ -1,6 +1,6 @@
 # Portfolio Oscar Jimenez - CLAUDE.md
 
-**Última actualización:** 2026-07-08  
+**Última actualización:** 2026-08-16  
 **Propósito:** Base central de conocimientos, decisiones de arquitectura, errores documentados, y evolución del proyecto.
 
 ## PRINCIPIO OPERATIVO (leer primero)
@@ -9,7 +9,16 @@ Este archivo es **la memoria y la mente activa del proyecto**. No es documentaci
 - **Aprende de errores y fallos:** cada bug, mal supuesto o corrección se registra en la tabla de "ERRORES DOCUMENTADOS & LECCIONES" con causa, solución y cómo evitarlo. La misma falla no se repite dos veces.
 - **Fuente de verdad:** ante conflicto entre lo que se recuerda y lo que dice este archivo, gana este archivo (y se corrige si quedó desactualizado).
 
-## ESTADO ACTUAL (2026-08-09)
+## ESTADO ACTUAL (2026-08-16)
+- ✅ **2026-08-16:** Batch de 7 cambios pedidos por Oscar.
+  1. **Cuatrimestre dinámico:** se confirmó vía el sitio oficial de UNIBE (`unibe.edu.do/calendario-academico/`) que la universidad corre en **cuatrimestres** (3 términos de 4 meses por año: Ene-Abr, May-Ago, Sep-Dic), no en semestres. Nuevo `src/utils/academicTerm.ts` calcula el cuatrimestre actual a partir de la fecha del sistema (inicio de programa asumido en el término Sep-Dic 2023 = término 1, dato retro-inferido porque hoy 16-ago-2026 caía en "9.º" y eso solo cuadra con ese punto de partida; último término = May-Ago 2027 = término 12, tal como indicó Oscar). `Experience.tsx` inyecta la etiqueta dinámica (`9.º cuatrimestre` / `9th term`) solo en el ítem `unibe-degree`; el resto de `experience.ts` no cambia. Tras agosto 2027 el cálculo se clampea en 12 (no sigue subiendo ni indica "graduado" automáticamente, pendiente si Oscar quiere ese estado más adelante).
+  2. **CV por geolocalización:** nuevo `src/utils/geoResume.ts`, lookup silencioso por IP (`https://ipapi.co/country/`, sin permiso de navegador) que mapea el país a uno de los 3 CVs (`anglosajon` para US/GB/CA/AU/NZ, `europass` para países UE, `latam` como default). `Contact.tsx` muestra un skeleton mientras detecta y solo el CV correspondiente al terminar; si el fetch falla o da un país fuera de mapa, cae de vuelta a mostrar los 3 (nunca deja al visitante sin opción de descarga). Probado en preview local, la llamada a ipapi.co resolvió 200 y el sitio filtró correctamente a un solo CV.
+  3. Se quitó el "Soy"/"I'm a" del Hero (`hero.intro` eliminado de `translations.ts`); ahora el rol animado abre la frase directamente.
+  4. Auditoría de "no usar dos puntos" en todo el copy visible del sitio; el único caso real era la descripción del Hero ("...con un mismo estándar: hacerlo bien."), reescrita sin dos puntos en ambos idiomas.
+  5. Se confirmó (vía `unibe.edu.do/escuelas/escuela-de-ingenieria-en-tecnologias-computacionales/`) que el nombre oficial de la carrera es **Ingeniería en Tecnologías Computacionales (TIC)**, distinto del que estaba puesto en `experience.ts` ("Ing. en Tecnologías de la Información y Comunicación", incorrecto). Se corrigió el rol de esa entrada al nombre completo oficial y se actualizó la primera mención en el párrafo de About (`aboutParagraphs[0]`) para usar el nombre completo también.
+  6. Stat "Años en tech" → **"Años de experiencia"** / "Years of experience" (`about.ts`), término más estándar.
+  7. Link de FIFA U-17 Women's World Cup 2024 en `experience.ts` actualizado a `https://www.fifa.com/en/tournaments/womens/u17womensworldcup/dominican-republic-2024` (la URL vieja apuntaba a un artículo específico de registro de voluntarios, ya no es la más representativa).
+  - Verificado con `tsc --noEmit`, `npm run build` y una pasada visual en Chrome vía preview local (Hero, About, Experience, Contact). Sin errores de consola ni de red.
 - ✅ **2026-08-09:** Nueva certificación **Network Technician Career Path** (Cisco Networking Academy, 09 ago 2026, Cert ID `175a37f0-fc2e-4024-a537-707efe384006`). Se agregó como **tier 1** (segunda tarjeta, justo después de Google) porque es el capstone del career path que agrupa los 3 módulos Cisco de networking que ya estaban en tier 2 (Networking Basics, Network Devices and Initial Configuration, Network Addressing and Basic Troubleshooting) + soporte y seguridad de red; además deja el grid de tier 1 en 6 tarjetas (3×2 exacto en `lg`).
   - Badge: `public/images/badges/network-technician-career-path.png` (llegó suelto en `certificates/`, se movió a `badges/` para respetar la convención).
   - Certificado: `public/images/certificates/network-technician-career-path.webp` (1400×949, 61KB), generado con Pillow desde el JPG original a `quality=82, method=6`. El JPG crudo (`Network_Technician_Career_Path_certificate.jpg`) se conserva en el repo igual que los PDFs crudos de las otras certs.

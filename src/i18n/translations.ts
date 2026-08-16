@@ -14,10 +14,9 @@ export const translations = {
     },
     hero: {
       eyebrow: "PORTAFOLIO · 2026",
-      intro: "Soy",
       roleConnector: ".",
       description:
-        "Construyo aplicaciones web full-stack y protejo sistemas. Ciberseguridad, desarrollo y automatización con un mismo estándar: hacerlo bien.",
+        "Construyo aplicaciones web full-stack y protejo sistemas. Ciberseguridad, desarrollo y automatización, todos con el mismo estándar de hacerlo bien.",
       ctaWork: "Ver proyectos",
       ctaContact: "Hablemos",
       scroll: "DESLIZA",
@@ -83,10 +82,9 @@ export const translations = {
     },
     hero: {
       eyebrow: "PORTFOLIO · 2026",
-      intro: "I'm a",
       roleConnector: ".",
       description:
-        "I build full-stack web applications and secure systems. Cybersecurity, development and automation held to one standard: doing it right.",
+        "I build full-stack web applications and secure systems. Cybersecurity, development and automation, all held to the same standard of doing it right.",
       ctaWork: "See work",
       ctaContact: "Let's talk",
       scroll: "SCROLL",

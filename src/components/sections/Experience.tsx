@@ -4,12 +4,20 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { experience } from "@/data/experience";
 import type { ExperienceItem } from "@/data/types";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { getCurrentTerm, formatTermLabel } from "@/utils/academicTerm";
 
 const TYPE_ICON: Record<ExperienceItem["type"], LucideIcon> = {
   work: Briefcase,
   education: GraduationCap,
   volunteer: HeartHandshake,
 };
+
+// Only the in-progress UNIBE degree needs a live cuatrimestre count.
+function periodFor(item: ExperienceItem, lang: "es" | "en"): string {
+  if (item.id !== "unibe-degree") return item.period[lang];
+  const term = formatTermLabel(getCurrentTerm(), lang);
+  return `${item.period[lang]} · ${term}`;
+}
 
 export default function Experience() {
   const { t, lang } = useLanguage();
@@ -45,7 +53,7 @@ export default function Experience() {
                   </div>
                   <div className="pt-0.5">
                     <span className="text-xs uppercase tracking-wider text-muted">
-                      {item.period[lang]}
+                      {periodFor(item, lang)}
                     </span>
                     <h3 className="mt-1 text-lg text-text-primary md:text-xl">
                       {item.role[lang]}
