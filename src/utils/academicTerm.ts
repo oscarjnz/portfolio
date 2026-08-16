@@ -35,3 +35,19 @@ function ordinalSuffixEn(n: number): string {
       return "th";
   }
 }
+
+// Three-phase academic status. Coursework (and the thesis defense) wraps up
+// with the May-Ago 2027 term, but the actual UNIBE colación (graduation
+// ceremony) isn't until November 2027, so there's a real gap where Oscar has
+// finished the degree but hasn't formally received it yet. Exact ceremony
+// day is a placeholder (Nov 1) pending the official date from UNIBE.
+export type AcademicStatus = "student" | "graduate" | "engineer";
+
+const COURSEWORK_END = new Date(2027, 7, 31); // Aug 31, 2027 — end of term 12
+const CEREMONY_DATE = new Date(2027, 10, 1); // Nov 1, 2027 — placeholder, confirm exact date
+
+export function getAcademicStatus(now: Date = new Date()): AcademicStatus {
+  if (now < COURSEWORK_END) return "student";
+  if (now < CEREMONY_DATE) return "graduate";
+  return "engineer";
+}

@@ -2,6 +2,8 @@ import { Fragment } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { aboutParagraphs, stats } from "@/data/about";
+import { ACADEMIC_STATUS_CONTENT } from "@/data/academicStatus";
+import { getAcademicStatus } from "@/utils/academicTerm";
 import { SITE } from "@/utils/constants";
 import SectionHeader from "@/components/ui/SectionHeader";
 
@@ -28,6 +30,8 @@ function renderParagraph(text: string) {
 
 export default function About() {
   const { t, lang } = useLanguage();
+  const statusContent = ACADEMIC_STATUS_CONTENT[getAcademicStatus()];
+  const paragraphs = [statusContent.aboutIntro, ...aboutParagraphs];
 
   return (
     <section id="about" className="bg-bg py-20 md:py-28">
@@ -36,7 +40,7 @@ export default function About() {
           eyebrow={t.about.eyebrow}
           heading={t.about.heading}
           headingItalic={t.about.headingItalic}
-          subtext={t.about.subtext}
+          subtext={statusContent.aboutSubtext[lang]}
         />
 
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
@@ -78,7 +82,7 @@ export default function About() {
           {/* Bio + stats */}
           <div>
             <div className="space-y-6">
-              {aboutParagraphs.map((p, i) => (
+              {paragraphs.map((p, i) => (
                 <motion.p
                   key={i}
                   initial={{ opacity: 0, y: 20 }}

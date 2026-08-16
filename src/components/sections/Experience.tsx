@@ -4,7 +4,8 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { experience } from "@/data/experience";
 import type { ExperienceItem } from "@/data/types";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { getCurrentTerm, formatTermLabel } from "@/utils/academicTerm";
+import { getCurrentTerm, formatTermLabel, getAcademicStatus } from "@/utils/academicTerm";
+import { ACADEMIC_STATUS_CONTENT } from "@/data/academicStatus";
 
 const TYPE_ICON: Record<ExperienceItem["type"], LucideIcon> = {
   work: Briefcase,
@@ -12,15 +13,26 @@ const TYPE_ICON: Record<ExperienceItem["type"], LucideIcon> = {
   volunteer: HeartHandshake,
 };
 
-// Only the in-progress UNIBE degree needs a live cuatrimestre count.
-function periodFor(item: ExperienceItem, lang: "es" | "en"): string {
-  if (item.id !== "unibe-degree") return item.period[lang];
-  const term = formatTermLabel(getCurrentTerm(), lang);
-  return `${item.period[lang]} · ${term}`;
+const UNIBE_DEGREE_ID = "unibe-degree";
+
+// Only the UNIBE degree entry changes wording as Oscar moves from student to
+// egresado (waiting on the November 2027 ceremony) to engineer; everything
+// else in experience.ts is static. See src/data/academicStatus.ts.
+function periodFor(item: ExperienceItem, lang: "es" | "en", status: ReturnType<typeof getAcademicStatus>): string {
+  if (item.id !== UNIBE_DEGREE_ID) return item.period[lang];
+  if (status === "student") {
+    return `${item.period[lang]} · ${formatTermLabel(getCurrentTerm(), lang)}`;
+  }
+  if (status === "graduate") {
+    return `${item.period[lang]} · ${lang === "es" ? "Egresado" : "Graduate"}`;
+  }
+  return item.period[lang];
 }
 
 export default function Experience() {
   const { t, lang } = useLanguage();
+  const status = getAcademicStatus();
+  const statusContent = ACADEMIC_STATUS_CONTENT[status];
 
   return (
     <section id="experience" className="bg-bg py-20 md:py-28">
@@ -53,10 +65,10 @@ export default function Experience() {
                   </div>
                   <div className="pt-0.5">
                     <span className="text-xs uppercase tracking-wider text-muted">
-                      {periodFor(item, lang)}
+                      {periodFor(item, lang, status)}
                     </span>
                     <h3 className="mt-1 text-lg text-text-primary md:text-xl">
-                      {item.role[lang]}
+                      {item.id === UNIBE_DEGREE_ID ? statusContent.degreeRole[lang] : item.role[lang]}
                     </h3>
                     {item.organizationUrl ? (
                       <a
@@ -73,7 +85,7 @@ export default function Experience() {
                       </p>
                     )}
                     <p className="mt-3 text-sm leading-relaxed text-muted">
-                      {item.description[lang]}
+                      {item.id === UNIBE_DEGREE_ID ? statusContent.degreeDescription[lang] : item.description[lang]}
                     </p>
                   </div>
                 </motion.div>

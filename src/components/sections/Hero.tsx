@@ -1,22 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { heroRoles } from "@/data/about";
+import { ACADEMIC_STATUS_CONTENT } from "@/data/academicStatus";
+import { getAcademicStatus } from "@/utils/academicTerm";
 import { SITE, HERO_VIDEO_SRC } from "@/utils/constants";
 
 export default function Hero() {
   const { t, lang } = useLanguage();
   const [roleIndex, setRoleIndex] = useState(0);
 
+  // Degree-status role (student / egresado / engineer) rotates in alongside
+  // the two fixed roles; see src/data/academicStatus.ts.
+  const roles = useMemo(
+    () => [...heroRoles, ACADEMIC_STATUS_CONTENT[getAcademicStatus()].heroRole],
+    [],
+  );
+
   // Cycle hero roles every 2s.
   useEffect(() => {
     const id = setInterval(
-      () => setRoleIndex((i) => (i + 1) % heroRoles.length),
+      () => setRoleIndex((i) => (i + 1) % roles.length),
       2000,
     );
     return () => clearInterval(id);
-  }, []);
+  }, [roles.length]);
 
-  const role = heroRoles[roleIndex][lang];
+  const role = roles[roleIndex][lang];
 
   return (
     <section

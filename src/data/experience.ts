@@ -34,13 +34,17 @@ export const experience: ExperienceItem[] = [
   },
   {
     id: "unibe-degree",
+    // role/description below are unused placeholders: Experience.tsx always
+    // overrides this entry from src/data/academicStatus.ts, since the title
+    // and description change with academic status (student / egresado /
+    // engineer). Kept only because ExperienceItem requires the fields.
     role: {
       es: "Ingeniería en Tecnologías Computacionales (TIC)",
       en: "Engineering in Computer Technologies (TIC)",
     },
     organization: "Universidad Iberoamericana (UNIBE)",
     organizationUrl: "https://unibe.edu.do",
-    // Cuatrimestre appended dynamically in Experience.tsx via getCurrentTerm().
+    // Cuatrimestre / egresado status appended dynamically in Experience.tsx.
     period: {
       es: "2023 - 2027",
       en: "2023 - 2027",

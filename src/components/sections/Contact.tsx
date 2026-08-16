@@ -37,6 +37,11 @@ export default function Contact() {
         ? resumes
         : resumes.filter((r) => r.id === resumeVisibility);
 
+  // Once location detection narrows this to one CV, drop every trace that
+  // implies a choice (region label, "pick a format" copy) — it should read
+  // as if that were the only CV that ever existed.
+  const isSingleResume = visibleResumes.length === 1;
+
   return (
     <footer
       id="contact"
@@ -110,9 +115,11 @@ export default function Contact() {
               <h3 className="text-sm uppercase tracking-[0.2em] text-text-primary">
                 {t.contact.resumeHeading}
               </h3>
-              <p className="mt-2 text-sm text-muted">
-                {t.contact.resumeSubtext}
-              </p>
+              {resumeVisibility !== "loading" && !isSingleResume && (
+                <p className="mt-2 text-sm text-muted">
+                  {t.contact.resumeSubtext}
+                </p>
+              )}
               <div className="mx-auto mt-6 flex max-w-2xl flex-col gap-3 sm:flex-row sm:justify-center">
                 {resumeVisibility === "loading" && (
                   <div className="h-[74px] flex-1 animate-pulse rounded-2xl border border-stroke bg-surface/40" />
@@ -128,11 +135,13 @@ export default function Contact() {
                   >
                     <span className="flex items-center gap-2 text-sm text-text-primary">
                       <Download className="h-4 w-4 text-muted transition-colors group-hover:text-text-primary" />
-                      {resume.label[lang]}
+                      {isSingleResume ? t.contact.resumeDownload : resume.label[lang]}
                     </span>
-                    <span className="text-xs text-muted">
-                      {resume.note[lang]}
-                    </span>
+                    {!isSingleResume && (
+                      <span className="text-xs text-muted">
+                        {resume.note[lang]}
+                      </span>
+                    )}
                   </a>
                 ))}
               </div>

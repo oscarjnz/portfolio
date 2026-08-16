@@ -25,7 +25,7 @@ export const translations = {
       eyebrow: "Sobre mí",
       heading: "Quién",
       headingItalic: "soy",
-      subtext: "Estudiante de Ingeniería TIC, analista de ciberseguridad y desarrollador.",
+      // Subtext depends on academic status; see src/data/academicStatus.ts.
     },
     skills: {
       eyebrow: "Stack técnico",
@@ -66,6 +66,7 @@ export const translations = {
       available: "Disponible para proyectos",
       resumeHeading: "Descarga mi CV",
       resumeSubtext: "Elige el formato según tu región.",
+      resumeDownload: "Descargar CV",
     },
     footer: {
       rights: "Todos los derechos reservados.",
@@ -93,7 +94,7 @@ export const translations = {
       eyebrow: "About",
       heading: "Who I",
       headingItalic: "am",
-      subtext: "ICT Engineering student, cybersecurity analyst and developer.",
+      // Subtext depends on academic status; see src/data/academicStatus.ts.
     },
     skills: {
       eyebrow: "Tech stack",
@@ -134,6 +135,7 @@ export const translations = {
       available: "Available for projects",
       resumeHeading: "Download my resume",
       resumeSubtext: "Pick the format for your region.",
+      resumeDownload: "Download resume",
     },
     footer: {
       rights: "All rights reserved.",
