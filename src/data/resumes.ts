@@ -14,6 +14,7 @@ export const resumes: Resume[] = [
       en: "US, UK, Canada, Australia",
     },
     file: "/cv/resume-anglosajon.pdf",
+    downloadName: "Oscar_Jimenez_CV-us.pdf",
   },
   {
     id: "europass",
@@ -26,6 +27,7 @@ export const resumes: Resume[] = [
       en: "European Union standard",
     },
     file: "/cv/resume-europass.pdf",
+    downloadName: "Oscar_Jimenez_CV-eu.pdf",
   },
   {
     id: "latam",
@@ -38,5 +40,6 @@ export const resumes: Resume[] = [
       en: "Latin America and continental Europe",
     },
     file: "/cv/resume-latam_europa_continental.pdf",
+    downloadName: "Oscar_Jimenez_CV-latam.pdf",
   },
 ];

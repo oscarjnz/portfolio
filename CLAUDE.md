@@ -1,6 +1,6 @@
 # Portfolio Oscar Jimenez - CLAUDE.md
 
-**Última actualización:** 2026-08-16 (noche)  
+**Última actualización:** 2026-08-25  
 **Propósito:** Base central de conocimientos, decisiones de arquitectura, errores documentados, y evolución del proyecto.
 
 ## PRINCIPIO OPERATIVO (leer primero)
@@ -9,7 +9,21 @@ Este archivo es **la memoria y la mente activa del proyecto**. No es documentaci
 - **Aprende de errores y fallos:** cada bug, mal supuesto o corrección se registra en la tabla de "ERRORES DOCUMENTADOS & LECCIONES" con causa, solución y cómo evitarlo. La misma falla no se repite dos veces.
 - **Fuente de verdad:** ante conflicto entre lo que se recuerda y lo que dice este archivo, gana este archivo (y se corrige si quedó desactualizado).
 
-## ESTADO ACTUAL (2026-08-16)
+## ESTADO ACTUAL (2026-08-25)
+- ✅ **2026-08-25:** Nombre de archivo del CV al descargar + headers de seguridad HTTP.
+  - **Problema reportado por Oscar:** al descargar el CV, el navegador lo guardaba con el nombre interno del archivo (`resume-anglosajon.pdf`, `resume-latam_europa_continental.pdf`), nombres que no dicen nada al que los recibe y que además filtran el detalle de que hay variantes regionales.
+  - **Fix:** nuevo campo `downloadName` en `Resume` (`src/data/types.ts`) y en cada entrada de `src/data/resumes.ts`. El `<a download="...">` en `Contact.tsx` ahora usa un nombre explícito en vez del atributo `download` vacío (que caía al basename de la URL):
+    - Caso normal (geolocalización resuelve a un único CV, `isSingleResume === true`): siempre descarga como **`Oscar_Jimenez_CV.pdf`**, sin sufijo, consistente con que ya se oculta la región en ese caso ([ver 2026-08-16 tarde](#estado-anterior-2026-07-30) más abajo, sección de CV geolocalizado).
+    - Caso fallback (geolocalización falla y se muestran los 3 CVs): cada uno descarga con un sufijo discreto que los distingue sin exponer las etiquetas internas viejas: `Oscar_Jimenez_CV-us.pdf`, `-eu.pdf`, `-latam.pdf`. Decisión confirmada con Oscar vía pregunta directa (prefirió distinguirlos en vez de que los 3 caigan con el mismo nombre y el navegador los numere).
+  - Los archivos físicos en `public/cv/` **no se renombraron** (siguen siendo `resume-anglosajon.pdf` etc., son solo la ruta interna de origen); lo que cambió es el nombre con el que el navegador los guarda, que es lo único visible para el visitante.
+  - **Barrido de salud general** (pedido explícito de Oscar: "que no falle de ninguna manera"), sin encontrar nada roto:
+    - `tsc --noEmit` limpio, `npm run build` limpio (bundle sin cambios de tamaño relevantes).
+    - Verificado en `vite preview` con Chrome: la detección de geolocalización (`ipapi.co/country/`) resuelve 200 y filtra a un solo CV; el atributo `download` inspeccionado vía JS confirma `Oscar_Jimenez_CV.pdf` en el caso single. Sin errores de consola (el único log es el aviso esperado de Vercel Analytics, que solo carga en producción, no en preview local). Sin requests 404 revisando las 47 requests de la carga completa de home (fuentes, JS chunks, todas las imágenes de certificaciones, video, CV).
+    - `geoResume.ts` ya tenía manejo robusto (timeout de 4s con `AbortController`, validación de formato de respuesta, fallback silencioso a mostrar los 3 CVs si algo falla) — no necesitó cambios.
+    - **Hallazgo real, corregido:** `vercel.json` no enviaba ningún header de seguridad HTTP (sin `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, `Strict-Transport-Security`), algo que desentona en el portafolio de alguien que se posiciona en ciberseguridad si un reclutador técnico revisa los headers. Se agregó un bloque `headers` para `/(.*)` con esos 5 headers (HSTS sin `preload`, ya que eso requiere sumisión externa a hstspreload.org y no debe activarse sin que Oscar lo decida explícitamente). De paso se agregó `Cache-Control` para `/cv/(.*)` (mismo criterio que `/images/` y `/videos/`, que ya lo tenían; a los PDFs les faltaba).
+    - No hay carpeta `api/`ni backend propio más allá de Vercel (redirects/headers) y `ipapi.co` como único servicio externo desde el cliente; no aplica revisión de backend más allá de eso.
+
+## ESTADO ANTERIOR (2026-08-16)
 - ✅ **2026-08-16 (noche):** Indexación SEO en Google (diagnóstico + fixes) y limpieza de historial de git.
   - **Diagnóstico:** `robots.txt` y `sitemap.xml` ya servían 200 con contenido correcto (no interceptados por ningún rewrite de SPA; el sitio es one-page así que no hace falta catch-all). Dominio canónico confirmado por `<link rel="canonical">` y `og:url`: **`https://osnarci.online/`** (apex, sin `www`).
   - **Fix 1 - `sitemap.xml` sin `lastmod`:** el único `<url>` (home) no traía fecha de última modificación. Se agregó `<lastmod>2026-08-16</lastmod>` (fecha real del último commit de contenido, vía `git log`), no la fecha de generación del sitemap.

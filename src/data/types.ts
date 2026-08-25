@@ -42,6 +42,7 @@ export interface Resume {
   label: Localized; // region-oriented CV format
   note: Localized; // short hint about where the format fits
   file: string; // path under /public
+  downloadName: string; // filename the browser saves on download (no internal region jargon)
 }
 
 export interface ExperienceItem {

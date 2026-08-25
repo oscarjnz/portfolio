@@ -130,7 +130,9 @@ export default function Contact() {
                     href={resume.file}
                     target="_blank"
                     rel="noopener noreferrer"
-                    download
+                    download={
+                      isSingleResume ? "Oscar_Jimenez_CV.pdf" : resume.downloadName
+                    }
                     className="group flex flex-1 flex-col items-center gap-1 rounded-2xl border border-stroke bg-surface/40 px-5 py-4 text-center transition-colors hover:border-white/20 hover:bg-surface/70"
                   >
                     <span className="flex items-center gap-2 text-sm text-text-primary">
