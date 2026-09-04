@@ -57,7 +57,11 @@ export default function About() {
               <div className="pointer-events-none absolute -left-1/4 top-0 h-1/2 w-3/4 rounded-full bg-[#4E85BF]/10 blur-3xl" />
               <img
                 src="/images/about/profile.webp"
-                alt={SITE.name}
+                alt={
+                  lang === "es"
+                    ? `Foto de perfil de ${SITE.name}`
+                    : `Profile photo of ${SITE.name}`
+                }
                 loading="lazy"
                 className="relative z-10 w-full object-contain"
               />
