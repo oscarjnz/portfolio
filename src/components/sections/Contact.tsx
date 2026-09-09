@@ -131,7 +131,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     download={
-                      isSingleResume ? "Oscar_Jimenez_CV.pdf" : resume.downloadName
+                      isSingleResume ? "Oscar-Jimenez-Resume.pdf" : resume.downloadName
                     }
                     className="group flex flex-1 flex-col items-center gap-1 rounded-2xl border border-stroke bg-surface/40 px-5 py-4 text-center transition-colors hover:border-white/20 hover:bg-surface/70"
                   >

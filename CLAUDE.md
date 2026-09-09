@@ -1,6 +1,6 @@
 # Portfolio Oscar Jimenez - CLAUDE.md
 
-**Última actualización:** 2026-09-04  
+**Última actualización:** 2026-09-09  
 **Propósito:** Base central de conocimientos, decisiones de arquitectura, errores documentados, y evolución del proyecto.
 
 ## PRINCIPIO OPERATIVO (leer primero)
@@ -9,7 +9,15 @@ Este archivo es **la memoria y la mente activa del proyecto**. No es documentaci
 - **Aprende de errores y fallos:** cada bug, mal supuesto o corrección se registra en la tabla de "ERRORES DOCUMENTADOS & LECCIONES" con causa, solución y cómo evitarlo. La misma falla no se repite dos veces.
 - **Fuente de verdad:** ante conflicto entre lo que se recuerda y lo que dice este archivo, gana este archivo (y se corrige si quedó desactualizado).
 
-## ESTADO ACTUAL (2026-09-04)
+## ESTADO ACTUAL (2026-09-09)
+- ✅ **2026-09-09:** Renombre completo de los archivos de CV a una nomenclatura profesional estándar, a pedido explícito de Oscar ("no puede ser que llame resume-latam-blablabla").
+  - **Investigación previa:** búsqueda de convenciones de nombre de archivo de CV que usan reclutadores/ATS (Jobscan, Hiration, StylingCV, etc.). Consenso: `FirstName-LastName-Resume.pdf`, guiones (no guiones bajos), sin jerga interna ("final", "v2", región), corto y legible.
+  - **Fix 1 - Archivos físicos renombrados** (`git mv`, conserva historial): `public/cv/resume-anglosajon.pdf` → `oscar-jimenez-resume-us.pdf`, `resume-europass.pdf` → `oscar-jimenez-resume-eu.pdf`, `resume-latam_europa_continental.pdf` → `oscar-jimenez-resume-latam.pdf`. Motivo: aunque el atributo `download` ya fijaba el nombre visible desde el fix de 2026-08-25, la ruta interna seguía expuesta en el `href` (visible al inspeccionar, copiar enlace o abrir en pestaña nueva); con esto el nombre feo desaparece de raíz, no solo del nombre de descarga.
+  - **Fix 2 - `downloadName` actualizado** en `src/data/resumes.ts`: `Oscar_Jimenez_CV-us.pdf` / `-eu.pdf` / `-latam.pdf` (guion bajo, "CV") → `Oscar-Jimenez-Resume-US.pdf` / `-EU.pdf` / `-LATAM.pdf` (guion, "Resume", sufijo de región en mayúsculas). Caso de CV único en `Contact.tsx` (geolocalización resuelve a un solo formato) pasó de `Oscar_Jimenez_CV.pdf` a `Oscar-Jimenez-Resume.pdf`, consistente con el mismo esquema.
+  - Verificado con `tsc --noEmit` limpio, `npm run build` limpio (los 3 PDFs renombrados aparecen en `dist/cv/`), y una pasada en Chrome vía `vite preview`: el atributo `download` del enlace inspeccionado vía JS confirma `Oscar-Jimenez-Resume.pdf` (caso single de este entorno), sin errores de consola.
+  - Nomenclatura queda fijada como estándar del proyecto: `Oscar-Jimenez-Resume[-REGION].pdf`, siempre con guiones y sin jerga interna, tanto en el archivo físico como en el nombre de descarga.
+
+## ESTADO ANTERIOR (2026-09-04)
 - ✅ **2026-09-04:** Auditoría SEO siguiendo la guía oficial de Google Search Central (SEO starter guide, pegada íntegra por Oscar) usando la skill `ecc:seo`. Checklist punto por punto contra el sitio real:
   - **Ya cumplía** (verificado, sin cambios): `robots.txt` permite todo y apunta al sitemap; `link rel="canonical"` autoconsistente; redirect 308 de `www` al apex (evita contenido duplicado); `<title>` (~46 car.) y meta description (~140 car.) dentro de los rangos recomendados por Google; un solo `<h1>` (Hero) y un `<h2>` por sección (`SectionHeader`) con `<h3>` correctamente anidados debajo, sin saltos de nivel; imágenes de certificaciones y proyectos con `alt` descriptivo (`cert.title` / `project.title`); todos los enlaces externos (UNIBE, FIFA, Credly, proyectos live) usan `rel="noopener noreferrer"` y texto de enlace descriptivo (nombre real de la organización, no "click aquí"); nada bloquea CSS/JS al rastreador.
   - **Fix 1 - `sitemap.xml` con `lastmod` desactualizado:** decía `2026-08-16` pero el último commit que tocó contenido real (`src/`, `index.html`, `public/`) fue `2026-08-25`, y esta misma sesión modificó contenido de nuevo. Actualizado a `2026-09-04` (fecha real de esta modificación, no fecha arbitraria).
@@ -548,6 +556,7 @@ EDUCATION:
 | Título de cert no coincide con su imagen | `fortinet-nse1` decía "Technical Introduction to Cybersecurity 3.0" pero el badge dice "NSE 1 - Threat Landscape" | Corregir el título al que muestra el badge real | Verificar cada imagen de cert contra su `title` en `data/certifications.ts` |
 | Imagen de cert expone PII | `talento_digital.png` muestra cédula (40215354255) + QR con datos personales | No publicarla: listar el cert como texto y gitignorear la imagen | Revisar visualmente toda imagen antes de publicarla; cédula/QR = privacidad |
 | `og:image` roto → links sin preview | `index.html` apuntaba a `/images/og-image.png` inexistente y con ruta relativa | Generar PNG real 1200×630 + URLs absolutas + `twitter:image`/`canonical` | og:image debe existir, ser PNG/JPG y usar URL absoluta |
+| Fix de nombre de descarga del CV quedó incompleto | El fix de 2026-08-25 solo cambió el atributo `download` (nombre visible al guardar); dejó los archivos físicos en `public/cv/` con nombres internos feos (`resume-latam_europa_continental.pdf`), expuestos en el `href` al inspeccionar/copiar enlace | Renombrar también los archivos físicos, no solo el atributo `download` | Cuando el nombre "feo" es el problema, revisar tanto el nombre visible (`download`) como la ruta real (`href`/`file`); un usuario técnico puede ver ambos |
 | Modal sin accesibilidad de teclado | `ProjectModal` no cerraba con Esc, sin focus-trap ni scroll-lock | `useEffect` con keydown Esc + trap Tab + `body.overflow` + restauración de foco + `role=dialog` | Todo modal necesita Esc, trap de foco, scroll-lock y restaurar foco |
 
 ### Lección clave - Robustez de animaciones

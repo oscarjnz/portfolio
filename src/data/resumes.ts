@@ -13,8 +13,8 @@ export const resumes: Resume[] = [
       es: "EE. UU., Reino Unido, Canadá, Australia",
       en: "US, UK, Canada, Australia",
     },
-    file: "/cv/resume-anglosajon.pdf",
-    downloadName: "Oscar_Jimenez_CV-us.pdf",
+    file: "/cv/oscar-jimenez-resume-us.pdf",
+    downloadName: "Oscar-Jimenez-Resume-US.pdf",
   },
   {
     id: "europass",
@@ -26,8 +26,8 @@ export const resumes: Resume[] = [
       es: "Estándar de la Unión Europea",
       en: "European Union standard",
     },
-    file: "/cv/resume-europass.pdf",
-    downloadName: "Oscar_Jimenez_CV-eu.pdf",
+    file: "/cv/oscar-jimenez-resume-eu.pdf",
+    downloadName: "Oscar-Jimenez-Resume-EU.pdf",
   },
   {
     id: "latam",
@@ -39,7 +39,7 @@ export const resumes: Resume[] = [
       es: "Latinoamérica y Europa continental",
       en: "Latin America and continental Europe",
     },
-    file: "/cv/resume-latam_europa_continental.pdf",
-    downloadName: "Oscar_Jimenez_CV-latam.pdf",
+    file: "/cv/oscar-jimenez-resume-latam.pdf",
+    downloadName: "Oscar-Jimenez-Resume-LATAM.pdf",
   },
 ];
