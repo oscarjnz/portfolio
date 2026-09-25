@@ -2,6 +2,21 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/cv/oscar-jimenez-resume-latam.pdf",
+      "destination": "/cv/latam/oscar-jimenez-resume.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/cv/oscar-jimenez-resume-us.pdf",
+      "destination": "/cv/us/oscar-jimenez-resume.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/cv/oscar-jimenez-resume-eu.pdf",
+      "destination": "/cv/eu/oscar-jimenez-resume.pdf",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [
         {
@@ -71,7 +86,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=604800, stale-while-revalidate=2592000"
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     },

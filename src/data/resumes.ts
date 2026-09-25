@@ -1,7 +1,8 @@
 import type { Resume } from "./types";
 
-// Region-oriented CV variants. Each PDF lives under /public/cv and is served
-// directly. Swapping a file only requires replacing it in that folder.
+// Region-oriented CV variants. Each PDF lives under /public/cv/<region>/ with the
+// SAME generic filename (oscar-jimenez-resume.pdf) so no region jargon shows in the
+// href, the tab title or the saved file. Regenerate with `node cv-src/build.mjs`.
 export const resumes: Resume[] = [
   {
     id: "anglosajon",
@@ -13,8 +14,8 @@ export const resumes: Resume[] = [
       es: "EE. UU., Reino Unido, Canadá, Australia",
       en: "US, UK, Canada, Australia",
     },
-    file: "/cv/oscar-jimenez-resume-us.pdf",
-    downloadName: "Oscar-Jimenez-Resume-US.pdf",
+    file: "/cv/us/oscar-jimenez-resume.pdf",
+    downloadName: "oscar-jimenez-resume.pdf",
   },
   {
     id: "europass",
@@ -26,8 +27,8 @@ export const resumes: Resume[] = [
       es: "Estándar de la Unión Europea",
       en: "European Union standard",
     },
-    file: "/cv/oscar-jimenez-resume-eu.pdf",
-    downloadName: "Oscar-Jimenez-Resume-EU.pdf",
+    file: "/cv/eu/oscar-jimenez-resume.pdf",
+    downloadName: "oscar-jimenez-resume.pdf",
   },
   {
     id: "latam",
@@ -39,7 +40,7 @@ export const resumes: Resume[] = [
       es: "Latinoamérica y Europa continental",
       en: "Latin America and continental Europe",
     },
-    file: "/cv/oscar-jimenez-resume-latam.pdf",
-    downloadName: "Oscar-Jimenez-Resume-LATAM.pdf",
+    file: "/cv/latam/oscar-jimenez-resume.pdf",
+    downloadName: "oscar-jimenez-resume.pdf",
   },
 ];

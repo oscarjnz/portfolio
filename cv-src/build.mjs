@@ -1,6 +1,7 @@
 // Fuente editable de los 3 CV (latam, us, eu). Genera HTML y PDF con Chrome headless.
 // Uso: node cv-src/build.mjs   (desde la raíz del repo)
-// Salida: public/cv/oscar-jimenez-resume-{latam,us,eu}.pdf (mismos nombres que usa src/data/resumes.ts).
+// Salida: public/cv/{latam,us,eu}/oscar-jimenez-resume.pdf. Mismo nombre de archivo en las tres regiones
+// (estándar del proyecto); la región solo vive en la carpeta. Rutas que usa src/data/resumes.ts.
 // Regla de estilo del proyecto: sin guion largo ni en dash como puntuación.
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
@@ -372,14 +373,16 @@ const page = (body, lang, title, cls = "") =>
   `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><title>${esc(title)}</title><style>${CSS}</style></head><body class="${cls}">${body}</body></html>`;
 
 const JOBS = [
-  { file: "oscar-jimenez-resume-latam", html: page(classic(CONTENT.es, true), "es", "Oscar O. Jimenez Peguero, CV") },
-  { file: "oscar-jimenez-resume-us", html: page(classic(CONTENT.en, false), "en", "Oscar O. Jimenez Peguero, Resume") },
-  { file: "oscar-jimenez-resume-eu", html: page(europass(CONTENT.en), "en", "Oscar O. Jimenez Peguero, Curriculum Vitae", "eu") },
+  { key: "latam", html: page(classic(CONTENT.es, true), "es", "Oscar O. Jimenez Peguero, CV") },
+  { key: "us", html: page(classic(CONTENT.en, false), "en", "Oscar O. Jimenez Peguero, Resume") },
+  { key: "eu", html: page(europass(CONTENT.en), "en", "Oscar O. Jimenez Peguero, Curriculum Vitae", "eu") },
 ];
 
 for (const j of JOBS) {
-  const htmlPath = join(OUT_HTML, `${j.file}.html`);
-  const pdfPath = join(OUT_PDF, `${j.file}.pdf`);
+  const htmlPath = join(OUT_HTML, `${j.key}.html`);
+  const pdfDir = join(OUT_PDF, j.key);
+  mkdirSync(pdfDir, { recursive: true });
+  const pdfPath = join(pdfDir, "oscar-jimenez-resume.pdf");
   writeFileSync(htmlPath, j.html, "utf8");
   execFileSync(
     CHROME,
