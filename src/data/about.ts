@@ -13,8 +13,8 @@ export const heroRoles: Localized[] = [
 // prepends it to this list.
 export const aboutParagraphs: Localized[] = [
   {
-    es: "Mi base es el blue team (monitoreo, SIEM y forense de red), pero también hago red team: explotación web, CTFs y pentesting. Construyo aplicaciones full-stack de punta a punta, despliego y administro yo mismo los servidores y VPS donde corren (Cloudflare Workers, Fly.io, Render, Docker) y automatizo lo que se pueda con bots e IA.",
-    en: "My foundation is blue team (monitoring, SIEM and network forensics), but I also do red team: web exploitation, CTFs and pentesting. I build full-stack apps end to end, deploying and administering the servers and VPS instances they run on myself (Cloudflare Workers, Fly.io, Render, Docker), and automate whatever I can with bots and AI.",
+    es: "Mi base es el blue team (monitoreo, SIEM y forense de red), pero también hago red team: explotación web, CTFs y pentesting. Construyo aplicaciones full-stack de punta a punta, despliego y administro yo mismo los servidores y VPS donde corren (un VPS Debian en GCP con Docker y monitoreo propio, Cloudflare Workers, Fly.io, Render), aplico autorización en servidor y RLS para aislar los datos de cada usuario, y automatizo lo que se pueda con bots e IA.",
+    en: "My foundation is blue team (monitoring, SIEM and network forensics), but I also do red team: web exploitation, CTFs and pentesting. I build full-stack apps end to end, deploying and administering the servers and VPS instances they run on myself (a Debian VPS on GCP with Docker and custom monitoring, Cloudflare Workers, Fly.io, Render), applying server-side authorization and RLS to isolate each user's data, and automate whatever I can with bots and AI.",
   },
   {
     es: "Fuera del teclado, jugué béisbol competitivo casi 12 años y sigo el deporte de cerca, desde la sabermetría hasta la recomposición corporal.",

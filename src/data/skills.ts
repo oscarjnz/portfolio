@@ -16,6 +16,7 @@ export const skillCategories: SkillCategory[] = [
       "Pentesting",
       "Análisis de vulnerabilidades",
       "Forense de red",
+      "Seguridad de aplicaciones (RLS, JWT, IDOR)",
     ],
   },
   {
@@ -47,6 +48,9 @@ export const skillCategories: SkillCategory[] = [
       "n8n",
       "SQL",
       "Python",
+      "APIs REST",
+      "WebSockets",
+      "RLS (Supabase)",
     ],
   },
   {
@@ -76,6 +80,10 @@ export const skillCategories: SkillCategory[] = [
       "VPS / DNS / SSL",
       "GitHub",
       "Docker",
+      "Debian / Linux",
+      "Apache + Let's Encrypt",
+      "ufw / fail2ban",
+      "Monitoreo con cron",
     ],
   },
   {
