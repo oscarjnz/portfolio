@@ -42,3 +42,12 @@ dist-types
 
 # TS build info
 *.tsbuildinfo
+
+# Impeccable design-skill local critique snapshots (tool state, not site content)
+.impeccable/
+
+# Generated CV HTML (source of truth is cv-src/build.mjs)
+cv-src/html/
+
+# Raw certificate exports: talento_digital.jpg exposes cedula + QR, never publish
+public/images/certificates/certificates webp to jpg/

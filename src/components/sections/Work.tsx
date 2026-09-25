@@ -94,7 +94,10 @@ function ProjectCard({
           }}
         />
         {/* Hover veil */}
-        <div className="absolute inset-0 flex items-center justify-center bg-bg/70 opacity-0 backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-100">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 flex items-center justify-center bg-bg/70 opacity-0 backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-100"
+        >
           <span className="relative rounded-full">
             <span className="animated-gradient-border absolute inset-[-2px] rounded-full" />
             <span className="relative inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm text-black">

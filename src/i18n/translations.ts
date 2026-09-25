@@ -50,6 +50,8 @@ export const translations = {
       subtext: "Aprendizaje continuo en seguridad, redes y desarrollo.",
       verify: "Verificar",
       more: "Más credenciales",
+      showAll: "Ver todas",
+      showLess: "Ver menos",
     },
     experience: {
       eyebrow: "Trayectoria",
@@ -119,6 +121,8 @@ export const translations = {
       subtext: "Continuous learning across security, networking and development.",
       verify: "Verify",
       more: "More credentials",
+      showAll: "Show all",
+      showLess: "Show less",
     },
     experience: {
       eyebrow: "Journey",

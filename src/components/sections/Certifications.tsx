@@ -2,16 +2,27 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Award, ShieldCheck, ArrowUpRight, X } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import type { Lang } from "@/i18n/translations";
 import { certifications } from "@/data/certifications";
 import type { Certification } from "@/data/types";
 import SectionHeader from "@/components/ui/SectionHeader";
 
+// Cap the "more credentials" grid so it doesn't read as an undifferentiated
+// wall right before Contact; expand on demand using the tier data that
+// already exists in certifications.ts.
+const MORE_CREDENTIALS_PREVIEW_COUNT = 6;
+
 export default function Certifications() {
   const { t } = useLanguage();
   const [selected, setSelected] = useState<Certification | null>(null);
+  const [showAllMore, setShowAllMore] = useState(false);
   const tier1 = certifications.filter((c) => c.tier === 1);
   const withImage = certifications.filter((c) => c.tier !== 1 && c.image);
   const textOnly = certifications.filter((c) => c.tier !== 1 && !c.image);
+  const visibleWithImage = showAllMore
+    ? withImage
+    : withImage.slice(0, MORE_CREDENTIALS_PREVIEW_COUNT);
+  const hasHiddenCredentials = withImage.length > MORE_CREDENTIALS_PREVIEW_COUNT;
 
   return (
     <section id="certifications" className="bg-bg py-20 md:py-28">
@@ -42,7 +53,7 @@ export default function Certifications() {
               {t.certifications.more}
             </h3>
             <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {withImage.map((cert, i) => (
+              {visibleWithImage.map((cert, i) => (
                 <ThumbCard
                   key={cert.id}
                   cert={cert}
@@ -51,6 +62,15 @@ export default function Certifications() {
                 />
               ))}
             </div>
+            {hasHiddenCredentials && (
+              <button
+                type="button"
+                onClick={() => setShowAllMore((v) => !v)}
+                className="mx-auto mt-5 flex items-center gap-1 rounded-full border border-stroke px-4 py-2 text-xs text-muted transition-colors hover:border-white/20 hover:text-text-primary"
+              >
+                {showAllMore ? t.certifications.showLess : t.certifications.showAll}
+              </button>
+            )}
           </>
         )}
 
@@ -95,6 +115,8 @@ function FeatureCard({
   index: number;
   onOpen: () => void;
 }) {
+  const { lang } = useLanguage();
+
   return (
     <motion.button
       type="button"
@@ -126,7 +148,7 @@ function FeatureCard({
         <p className="mt-1 text-xs text-muted">{cert.issuer}</p>
         <div className="mt-auto flex items-center justify-between pt-3">
           <span className="text-[11px] uppercase tracking-wider text-muted">
-            {formatDate(cert.date)}
+            {formatDate(cert.date, lang)}
           </span>
           <span className="inline-flex items-center gap-1 text-[11px] font-medium text-text-primary/0 transition-colors group-hover:text-text-primary/70">
             <ArrowUpRight className="h-3 w-3" />
@@ -271,7 +293,7 @@ function CertificateModal({
             {cert.title}
           </h3>
           <p className="mt-1 text-sm text-muted">
-            {cert.issuer} · {formatDate(cert.date)}
+            {cert.issuer} · {formatDate(cert.date, lang)}
           </p>
 
           {cert.credentialUrl && (
@@ -294,11 +316,13 @@ function CertificateModal({
   );
 }
 
-function formatDate(iso: string): string {
+const MONTHS_BY_LANG: Record<Lang, string[]> = {
+  es: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+  en: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+};
+
+function formatDate(iso: string, lang: Lang): string {
   const [year, month] = iso.split("-");
-  const months = [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-  ];
+  const months = MONTHS_BY_LANG[lang];
   return month ? `${months[Number(month) - 1]} ${year}` : year;
 }
