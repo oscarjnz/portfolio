@@ -19,7 +19,5 @@ export const SOCIAL = {
   instagram: "https://instagram.com/oscar.jp__",
 } as const;
 
-// Background video: local MP4 (self-hosted, ~2.6MB). No external stream.
-export const HERO_VIDEO_SRC = "/videos/hero.mp4";
 
 export const SCROLL_THRESHOLD = 100; // px, navbar gains shadow past this

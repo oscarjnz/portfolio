@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
+import TopDock from "@/components/layout/TopDock";
 import LoadingScreen from "@/components/sections/LoadingScreen";
 import Hero from "@/components/sections/Hero";
 
@@ -22,6 +23,7 @@ export default function App() {
       </AnimatePresence>
 
       <Navbar />
+      <TopDock />
       <main>
         <Hero />
         <Suspense fallback={null}>

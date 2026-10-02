@@ -1,0 +1,108 @@
+/* Portfolio host styles for the ThreeUI glass dock. threeui.css stays verbatim;
+   everything specific to this site lives here. */
+
+/* Hero: the bead field only. The rail lives in SideDock, so the left scrim that
+   protects the rail's wordmark is dropped and the field sits under the hero copy. */
+.atd-glass.atd-glass--field {
+  position: absolute;
+  inset: 0;
+  background: #08090d;
+}
+
+.atd-glass.atd-glass--field::before,
+.atd-glass.atd-glass--field::after {
+  display: none;
+}
+
+/* Site nav: a viewport-sized transparent layer that holds only the rail. It is
+   full width on purpose, the rail sizes itself from container query units. */
+.atd-glass.atd-glass--rail {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  background: transparent;
+  pointer-events: none;
+}
+
+.atd-glass.atd-glass--rail::before,
+.atd-glass.atd-glass--rail::after {
+  display: none;
+}
+
+/* Horizontal fit: the glass rail is laid on its side as a top bar. The dock track
+   is pinned to its rest width (lockTrack) so the growing items overflow it
+   instead of moving the brand and the actions around. */
+.atd-glass.atd-glass--rail .atd-glass__rail {
+  top: clamp(12px, 1.6cqw, 28px);
+  left: 50%;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(6px, 0.5cqw, 12px);
+  width: max-content;
+  max-width: calc(100% - 24px);
+  pointer-events: auto;
+  border-radius: 999px;
+  transform: translateX(-50%);
+}
+
+.atd-glass--rail .atd-glass__brand {
+  padding: 0 clamp(6px, 0.5cqw, 12px) 0 clamp(8px, 0.7cqw, 14px);
+}
+
+.atd-glass--rail .atd-glass__dock {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  height: var(--atd-item-height);
+}
+
+.atd-glass--rail .atd-glass__item {
+  width: auto;
+  justify-content: center;
+  border-radius: 999px;
+  transform-origin: 50% 0;
+}
+
+.atd-glass--rail .atd-glass__hairline {
+  width: 1px;
+  height: clamp(18px, 1.4cqw, 28px);
+  margin: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.04));
+}
+
+.atd-glass--rail .atd-glass__cta {
+  width: auto;
+  justify-content: center;
+  padding: 0 clamp(14px, 1.1cqw, 24px);
+}
+
+.atd-glass--rail .atd-glass__lang {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+/* Tight desktops: drop the labels and the wordmark so the bar stays compact. */
+@media (max-width: 1000px) {
+  .atd-glass--rail .atd-glass__item span:last-child,
+  .atd-glass--rail .atd-glass__word,
+  .atd-glass--rail .atd-glass__cta span {
+    display: none;
+  }
+
+  .atd-glass--rail .atd-glass__cta {
+    padding: 0 12px;
+  }
+}
+
+/* Phones keep the existing top Navbar. */
+@media (max-width: 767px) {
+  .atd-glass.atd-glass--rail {
+    display: none;
+  }
+}
+
+

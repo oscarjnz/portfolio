@@ -42,7 +42,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 flex justify-center px-4 pt-4 md:pt-6">
+    <nav className="fixed left-0 right-0 top-0 z-50 flex justify-center px-4 pt-4 md:hidden">
       <div
         className={cn(
           "inline-flex items-center rounded-full border border-white/10 bg-surface/80 px-2 py-2 backdrop-blur-md transition-shadow",

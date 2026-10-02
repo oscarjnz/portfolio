@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, ArrowUpRight, Download } from "lucide-react";
+import ContactForm from "@/components/ui/ContactForm";
+import { Github, Linkedin, Instagram, Download } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { SITE, SOCIAL, HERO_VIDEO_SRC } from "@/utils/constants";
+import { SITE, SOCIAL } from "@/utils/constants";
 import { resumes } from "@/data/resumes";
 import { detectResumeByLocation } from "@/utils/geoResume";
 import type { Resume } from "@/data/types";
@@ -47,22 +48,6 @@ export default function Contact() {
       id="contact"
       className="relative overflow-hidden bg-bg pb-8 pt-20 md:pb-12 md:pt-28"
     >
-      {/* Background video, flipped */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden="true"
-        tabIndex={-1}
-        preload="none"
-        className="absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-y-[-1] object-cover opacity-60"
-      >
-        <source src={HERO_VIDEO_SRC} type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-black/70" />
-      <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg" />
-
       <div className="relative z-10">
         {/* Marquee */}
         <div className="mb-16 overflow-hidden md:mb-24">
@@ -99,16 +84,18 @@ export default function Contact() {
               {t.contact.subtext}
             </p>
 
-            <a
-              href={`mailto:${SITE.email}`}
-              className="group relative mt-10 inline-flex rounded-full"
-            >
-              <span className="animated-gradient-border absolute inset-[-2px] rounded-full opacity-0 transition-opacity group-hover:opacity-100" />
-              <span className="relative inline-flex items-center gap-2 rounded-full bg-text-primary px-8 py-4 text-sm text-bg md:text-base">
-                {SITE.email}
-                <ArrowUpRight className="h-4 w-4" />
-              </span>
-            </a>
+            <div className="mx-auto mt-10 max-w-xl">
+              <ContactForm />
+              <p className="mt-6 text-sm text-muted">
+                {t.contact.form.direct}{" "}
+                <a
+                  href={`mailto:${SITE.email}`}
+                  className="text-text-primary underline underline-offset-4 transition-colors hover:text-muted"
+                >
+                  {SITE.email}
+                </a>
+              </p>
+            </div>
 
             {/* Resume downloads, one per region-oriented format */}
             <div className="mt-16">
