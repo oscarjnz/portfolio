@@ -15,7 +15,7 @@ export const translations = {
     hero: {
       roleConnector: ".",
       description:
-        "Aplicaciones web full-stack que saben defenderse. Ciberseguridad, desarrollo y automatización en una sola persona.",
+        "Aplicaciones web full-stack, redes de datos, ciberseguridad, administración de servidores Linux y automatización de procesos.",
       ctaWork: "Ver proyectos",
       ctaContact: "Hablemos",
       scroll: "DESLIZA",
@@ -63,7 +63,7 @@ export const translations = {
       heading: "Construyamos",
       headingItalic: "algo juntos",
       subtext:
-        "Un proyecto, una duda de seguridad o un simple hola. El mensaje le llega directo a Oscar.",
+        "Un proyecto, una duda o simplemente ganas de conversar. Escribe aquí y el mensaje llega directo a Oscar.",
       available: "Disponible para proyectos",
       form: {
         firstName: "Nombre",
@@ -117,7 +117,7 @@ export const translations = {
     hero: {
       roleConnector: ".",
       description:
-        "Full-stack web apps that know how to defend themselves. Cybersecurity, development and automation in one person.",
+        "Full-stack web apps, data networking, cybersecurity, Linux server administration and process automation.",
       ctaWork: "See work",
       ctaContact: "Let's talk",
       scroll: "SCROLL",
@@ -165,7 +165,7 @@ export const translations = {
       heading: "Let's build",
       headingItalic: "something together",
       subtext:
-        "A project, a security question or a simple hello. The message goes straight to Oscar.",
+        "A project, a question or simply a wish to talk. Write here and the message goes straight to Oscar.",
       available: "Available for projects",
       form: {
         firstName: "First name",
