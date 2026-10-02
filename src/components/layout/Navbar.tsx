@@ -42,7 +42,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 flex justify-center px-4 pt-4 md:hidden">
+    <nav className="fixed left-0 right-0 top-0 z-50 flex justify-center px-2 pt-4 min-[400px]:px-4 md:hidden">
       <div
         className={cn(
           "inline-flex items-center rounded-full border border-white/10 bg-surface/80 px-2 py-2 backdrop-blur-md transition-shadow",
@@ -53,7 +53,7 @@ export default function Navbar() {
         <button
           onClick={() => scrollTo("home")}
           aria-label={t.nav.home}
-          className="group relative grid h-9 w-9 place-items-center rounded-full"
+          className="group relative hidden h-9 w-9 place-items-center rounded-full sm:grid"
         >
           <span className="accent-gradient absolute inset-0 rounded-full transition-transform duration-500 group-hover:rotate-180" />
           <span className="absolute inset-[2px] grid place-items-center rounded-full bg-bg transition-transform group-hover:scale-110">
@@ -72,7 +72,7 @@ export default function Navbar() {
               key={id}
               onClick={() => scrollTo(id)}
               className={cn(
-                "rounded-full px-3 py-1.5 text-xs transition-colors sm:px-4 sm:py-2 sm:text-sm",
+                "whitespace-nowrap rounded-full px-1.5 py-1.5 text-[11px] transition-colors min-[360px]:px-2 min-[400px]:px-3 min-[400px]:text-xs sm:px-4 sm:py-2 sm:text-sm",
                 active === id
                   ? "bg-stroke/50 text-text-primary"
                   : "text-muted hover:bg-stroke/50 hover:text-text-primary",

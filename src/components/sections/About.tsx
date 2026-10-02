@@ -100,7 +100,8 @@ export default function About() {
               ))}
             </div>
 
-            <div className="mt-10 grid grid-cols-3 gap-4">
+            {/* Mobile: one joined card with three divided columns. sm and up: three separate cards. */}
+            <div className="mt-10 grid grid-cols-3 divide-x divide-stroke overflow-hidden rounded-2xl border border-stroke bg-surface/40 sm:gap-4 sm:divide-x-0 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent">
               {stats.map((s, i) => (
                 <motion.div
                   key={i}
@@ -108,12 +109,12 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.6, delay: i * 0.08 }}
-                  className="rounded-2xl border border-stroke bg-surface/40 p-5"
+                  className="flex min-w-0 flex-col items-center justify-start px-2 py-5 text-center sm:items-start sm:rounded-2xl sm:border sm:border-stroke sm:bg-surface/40 sm:p-5 sm:text-left"
                 >
-                  <div className="font-display text-4xl italic text-text-primary md:text-5xl">
+                  <div className="font-display text-3xl italic leading-none text-text-primary sm:text-4xl md:text-5xl">
                     {s.value}
                   </div>
-                  <div className="mt-1 text-xs uppercase tracking-wider text-muted">
+                  <div className="mt-2 text-balance text-[10px] uppercase leading-snug tracking-wide text-muted sm:mt-1 sm:text-xs sm:tracking-wider">
                     {s.label[lang]}
                   </div>
                 </motion.div>
