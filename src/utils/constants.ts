@@ -15,7 +15,7 @@ export const SITE = {
 
 export const SOCIAL = {
   github: "https://github.com/oscarjnz",
-  linkedin: "https://www.linkedin.com/in/oscar-jimenez-cybersechack",
+  linkedin: "https://www.linkedin.com/in/oscar-osnarci-jimenez/",
   instagram: "https://instagram.com/oscar.jp__",
 } as const;
 

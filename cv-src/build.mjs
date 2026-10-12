@@ -20,7 +20,7 @@ if (!CHROME) throw new Error("Chrome no encontrado. Define CHROME_PATH.");
 mkdirSync(OUT_HTML, { recursive: true });
 
 const LINKS = {
-  linkedin: "https://www.linkedin.com/in/oscar-jimenez-cybersechack",
+  linkedin: "https://www.linkedin.com/in/oscar-osnarci-jimenez/",
   github: "https://github.com/oscarjnz",
   site: "https://osnarci.online",
   sss: "https://securitysmartservices.site",
@@ -318,7 +318,7 @@ function europass(c) {
     ["Address", c.location],
     ["Telephone", "+1 809 966 2254"],
     ["Email", a(LINKS.email, "oscar@osnarci.online")],
-    ["LinkedIn", a(LINKS.linkedin, "linkedin.com/in/oscar-jimenez-cybersechack")],
+    ["LinkedIn", a(LINKS.linkedin, "linkedin.com/in/oscar-osnarci-jimenez/")],
     ["GitHub", a(LINKS.github, "github.com/oscarjnz")],
     ["Website / Portfolio", a(LINKS.site, "osnarci.online")],
     ["Project Website", a(LINKS.sss, "securitysmartservices.site")],
