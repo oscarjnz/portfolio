@@ -100,6 +100,7 @@ export const translations = {
       resumeHeading: "Descargar CV",
       resumeSubtext: "Elige el formato según tu región.",
       resumeDownload: "Descargar CV",
+      resumeLanguage: { es: "PDF en español", en: "PDF en inglés" },
     },
     footer: {
       rights: "Todos los derechos reservados.",
@@ -202,6 +203,7 @@ export const translations = {
       resumeHeading: "Download resume",
       resumeSubtext: "Pick the format for your region.",
       resumeDownload: "Download resume",
+      resumeLanguage: { es: "PDF in Spanish", en: "PDF in English" },
     },
     footer: {
       rights: "All rights reserved.",

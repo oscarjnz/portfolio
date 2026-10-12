@@ -43,6 +43,7 @@ export interface Resume {
   note: Localized; // short hint about where the format fits
   file: string; // path under /public
   downloadName: string; // filename the browser saves on download (no internal region jargon)
+  language: Lang; // language the PDF itself is written in
 }
 
 export interface ExperienceItem {

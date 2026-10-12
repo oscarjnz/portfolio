@@ -31,12 +31,17 @@ export default function Contact() {
     };
   }, []);
 
+  // With the site in English nobody should get the Spanish PDF: a visitor whose
+  // region maps to it gets the English one instead, and it leaves the fallback list.
+  const resumeId =
+    lang === "en" && resumeVisibility === "latam" ? "anglosajon" : resumeVisibility;
+
   const visibleResumes =
-    resumeVisibility === "loading"
+    resumeId === "loading"
       ? []
-      : resumeVisibility === "all"
-        ? resumes
-        : resumes.filter((r) => r.id === resumeVisibility);
+      : resumeId === "all"
+        ? resumes.filter((r) => lang !== "en" || r.language === "en")
+        : resumes.filter((r) => r.id === resumeId);
 
   // Once location detection narrows this to one CV, drop every trace that
   // implies a choice (region label, "pick a format" copy) — it should read
@@ -132,6 +137,11 @@ export default function Contact() {
                   </a>
                 ))}
               </div>
+              {isSingleResume && (
+                <p className="mt-3 text-xs text-muted">
+                  {t.contact.resumeLanguage[visibleResumes[0].language]}
+                </p>
+              )}
             </div>
           </motion.div>
         </div>

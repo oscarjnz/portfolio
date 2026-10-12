@@ -16,6 +16,7 @@ export const resumes: Resume[] = [
     },
     file: "/cv/us/oscar-jimenez-resume.pdf",
     downloadName: "oscar-jimenez-resume.pdf",
+    language: "en",
   },
   {
     id: "europass",
@@ -29,6 +30,7 @@ export const resumes: Resume[] = [
     },
     file: "/cv/eu/oscar-jimenez-resume.pdf",
     downloadName: "oscar-jimenez-resume.pdf",
+    language: "en",
   },
   {
     id: "latam",
@@ -42,5 +44,6 @@ export const resumes: Resume[] = [
     },
     file: "/cv/latam/oscar-jimenez-resume.pdf",
     downloadName: "oscar-jimenez-resume.pdf",
+    language: "es",
   },
 ];
